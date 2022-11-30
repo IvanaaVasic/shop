@@ -1,9 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.scss'
+import styles from "../styles/Home.module.scss";
+import NavBar from "../components/NavBar";
 
 export default function Home() {
   return (
-    <h1>Online shop</h1>
-  )
+    <>
+      <NavBar />
+    </>
+  );
 }

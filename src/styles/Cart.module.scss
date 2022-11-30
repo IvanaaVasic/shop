@@ -1,0 +1,13 @@
+.cartContainer {
+  display: flex;
+  gap: 10px;
+}
+.quantityPriceHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  &__size {
+    font-size: 12px;
+  }
+}
