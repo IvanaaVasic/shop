@@ -3,7 +3,7 @@ import Image from "next/image";
 import CartStyle from "../styles/Cart.module.scss";
 
 const Cart = () => {
-  const isEmpty = true;
+  const isEmpty: boolean = true;
   return (
     <div className={CartStyle.cartContainer}>
       {isEmpty ? (
