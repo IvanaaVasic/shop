@@ -1,21 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import CartStyle from "../styles/Cart.module.scss";
+import styles from "../styles/Cart.module.scss";
 
 const Cart = () => {
   const isEmpty: boolean = true;
   return (
-    <div className={CartStyle.cartContainer}>
+    <div className={styles.cartContainer}>
       {isEmpty ? (
-        <div className={CartStyle.quantityPriceHolder}>
-          <div className={CartStyle.quantityPriceHolder__size}>0</div>
+        <div className={styles.quantityPriceHolder}>
+          <div className={styles.quantityPriceHolder__size}>0</div>
         </div>
       ) : (
-        <div className={CartStyle.quantityPriceHolder}>
-          <div className={CartStyle.quantityPriceHolder__size}>3 products</div>
-          <div className={CartStyle.quantityPriceHolder__size}>
-            RSD 1.200,00
-          </div>
+        <div className={styles.quantityPriceHolder}>
+          <div className={styles.quantityPriceHolder__size}>3 products</div>
+          <div className={styles.quantityPriceHolder__size}>RSD 1.200,00</div>
         </div>
       )}
       <Image
