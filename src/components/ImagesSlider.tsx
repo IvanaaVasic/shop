@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "../styles/ImagesSlider.module.scss";
 import Image from "next/image";
@@ -6,9 +6,21 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import required modules
 import { Autoplay, Pagination } from "swiper";
 
+export interface imagesInterface {
+  img: string;
+  id: number;
+}
+const images: imagesInterface[] = [
+  { img: "/images/sneakers.jpg", id: 1 },
+  { img: "/images/sneakers1.jpg", id: 2 },
+  { img: "/images/sneakers2.jpg", id: 3 },
+  { img: "/images/sneakers3.jpg", id: 4 },
+  { img: "/images/sneakers4.jpg", id: 5 },
+  { img: "/images/sneakers5.jpg", id: 6 },
+  { img: "/images/sneakers6.jpg", id: 7 },
+];
 const ImagesSlider = () => {
   return (
     <>
@@ -26,62 +38,18 @@ const ImagesSlider = () => {
         modules={[Autoplay, Pagination]}
         className={styles.imgSwiper}
       >
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers1.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers2.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers3.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers4.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers5.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/sneakers6.jpg"
-            alt="cart icon"
-            layout="fill"
-            objectFit="cover"
-          />
-        </SwiperSlide>
+        {images.map((image) => {
+          return (
+            <SwiperSlide key={image.id}>
+              <Image
+                src={image.img}
+                alt="cart icon"
+                layout="fill"
+                objectFit="cover"
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );

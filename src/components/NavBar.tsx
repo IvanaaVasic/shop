@@ -3,7 +3,17 @@ import Cart from "./Cart";
 import styles from "../styles/NavBar.module.scss";
 import Image from "next/image";
 import NextLink from "next/link";
-import data from "../../public/json/navData.json";
+
+export interface navigationData {
+  name: string;
+  path: string;
+}
+const data: navigationData[] = [
+  { name: "HOME", path: "/" },
+  { name: "CHECKOUT", path: "/checkout" },
+  { name: "CONTACT", path: "/contact" },
+  { name: "PRODUCT", path: "/product" },
+];
 
 const NavBar = () => {
   return (
@@ -11,7 +21,7 @@ const NavBar = () => {
       <Image src="/images/geta-logo.png" alt="Logo" width={130} height={40} />
       <div className={styles.navigationCartContainer}>
         <nav className={styles.navigation}>
-          {data?.data.map((nav) => {
+          {data?.map((nav) => {
             return (
               <NextLink href={nav.path} className={styles.navigation__link}>
                 {nav.name}

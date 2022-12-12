@@ -1,8 +1,0 @@
-{
-  "data": [
-    { "name": "HOME", "path": "/" },
-    { "name": "CHECKOUT", "path": "/checkout" },
-    { "name": "CONTACT", "path": "/contact" },
-    { "name": "PRODUCT", "path": "/product" }
-  ]
-}
