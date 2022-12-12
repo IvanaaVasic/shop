@@ -8,6 +8,8 @@ import ProductCard from "./ProductCard";
 import { Product } from "./ProductCard";
 import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct } from "../../store/actions/productAction";
 
 export const productsInfo = [
   {
@@ -71,6 +73,9 @@ export const productsInfo = [
 const ProductsView = () => {
   const [cart, setCart] = useState<Product[]>([]);
   console.log(cart);
+  const dispatch = useDispatch();
+  dispatch(addProduct(cart));
+
   return (
     <>
       <Swiper

@@ -1,9 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import CartStyle from "../styles/Cart.module.scss";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const isEmpty: boolean = true;
+  let isEmpty: boolean;
+
+  const productsCart = useSelector((state: any) => state.sample);
+
+  if (productsCart[0]) {
+    isEmpty = productsCart[0]?.isEmpty;
+  } else {
+    isEmpty = true;
+  }
+
   return (
     <div className={CartStyle.cartContainer}>
       {isEmpty ? (

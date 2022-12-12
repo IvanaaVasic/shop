@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../styles/ProductCard.module.scss";
 import Image from "next/image";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -9,6 +9,7 @@ export interface Product {
   name: string;
   price: string;
   quantity: number;
+  isEmpty: boolean;
 }
 interface ProductCardProps {
   image: string;
@@ -36,10 +37,13 @@ const ProductCard = ({
         name: name,
         price: price,
         quantity: 1,
+        isEmpty: false,
       },
     ]);
+
     event.preventDefault();
   };
+
   return (
     <div className={styles.productCard__cardContainer}>
       <div className={styles.productCard__imageHolder}>
