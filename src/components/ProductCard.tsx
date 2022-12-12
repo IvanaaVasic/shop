@@ -44,6 +44,9 @@ const ProductCard = ({
     event.preventDefault();
   };
 
+  const priceFor = Intl.NumberFormat("en-US");
+  const new_priceFor = priceFor.format(Number(price));
+
   return (
     <div className={styles.productCard__cardContainer}>
       <div className={styles.productCard__imageHolder}>
@@ -55,7 +58,7 @@ const ProductCard = ({
         </div>
         <div className={styles.productCard__infoCardHolder}>
           <p className={styles.productCard__productName}>{name}</p>
-          <p>{`${price} rsd`}</p>
+          <p>{`${new_priceFor} rsd`}</p>
           <button className={styles.productCard__btn} onClick={addToCart}>
             <MdOutlineShoppingCart size={28} color="#fff" />
           </button>

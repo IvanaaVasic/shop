@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import CartStyle from "../styles/Cart.module.scss";
 import { useSelector } from "react-redux";
@@ -14,6 +14,16 @@ const Cart = () => {
     isEmpty = true;
   }
 
+  let totalPrice = 0;
+  if (Array.isArray(productsCart)) {
+    productsCart.forEach((product) => {
+      totalPrice += Number(product.price);
+    });
+  }
+
+  const priceFor = Intl.NumberFormat("en-US");
+  const new_priceFor = priceFor.format(totalPrice);
+
   return (
     <div className={CartStyle.cartContainer}>
       {isEmpty ? (
@@ -22,9 +32,11 @@ const Cart = () => {
         </div>
       ) : (
         <div className={CartStyle.quantityPriceHolder}>
-          <div className={CartStyle.quantityPriceHolder__size}>3 products</div>
+          <div
+            className={CartStyle.quantityPriceHolder__size}
+          >{`${productsCart.length} products`}</div>
           <div className={CartStyle.quantityPriceHolder__size}>
-            RSD 1.200,00
+            {`RSD ${new_priceFor}`}
           </div>
         </div>
       )}

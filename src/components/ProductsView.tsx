@@ -16,63 +16,63 @@ export const productsInfo = [
     imgSrc: "/images/products/product.jpg",
     brandName: "Nike",
     productName: "Air Max 253",
-    productPrice: "12.550,00",
+    productPrice: "12550",
     id: 1,
   },
   {
     imgSrc: "/images/products/product1.jpg",
     brandName: "New Balance",
     productName: "New Balance 650",
-    productPrice: "8.500,00",
+    productPrice: "8500",
     id: 2,
   },
   {
     imgSrc: "/images/products/product2.jpg",
     brandName: "Nike",
     productName: "Nike Air Force",
-    productPrice: "17.420,00",
+    productPrice: "17420",
     id: 3,
   },
   {
     imgSrc: "/images/products/product3.jpg",
     brandName: "K Swiss",
     productName: "Ultra Shot 3",
-    productPrice: "15.000,00",
+    productPrice: "15000",
     id: 4,
   },
   {
     imgSrc: "/images/products/product4.jpg",
     brandName: "Skechers",
     productName: "Dighton Bricelyn",
-    productPrice: "5.090,00",
+    productPrice: "5090",
     id: 5,
   },
   {
     imgSrc: "/images/products/product5.jpg",
     brandName: "Converse",
     productName: "Chuck Taylor All Star",
-    productPrice: "15.490,00",
+    productPrice: "15490",
     id: 6,
   },
   {
     imgSrc: "/images/products/product6.jpg",
     brandName: "Puma",
     productName: "Contempt Demi",
-    productPrice: "7.890,00",
+    productPrice: "7890",
     id: 7,
   },
   {
     imgSrc: "/images/products/product7.jpg",
     brandName: "Adidas",
     productName: "Ultraboost",
-    productPrice: "23.760,00",
+    productPrice: "23760",
     id: 8,
   },
 ];
 
 const ProductsView = () => {
   const [cart, setCart] = useState<Product[]>([]);
-  console.log(cart);
+
   const dispatch = useDispatch();
   dispatch(addProduct(cart));
 
