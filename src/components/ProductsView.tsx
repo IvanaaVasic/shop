@@ -69,6 +69,13 @@ export const productsInfo = [
     id: 8,
   },
 ];
+export interface IProduct {
+  imgSrc: string;
+  brandName: string;
+  productName: string;
+  productPrice: string;
+  id: number;
+}
 
 const ProductsView = () => {
   const [cart, setCart] = useState<Product[]>([]);
@@ -118,22 +125,27 @@ const ProductsView = () => {
         modules={[Pagination, Navigation]}
         className={styles.productCard__swiper}
       >
-        {productsInfo.map((product) => {
-          return (
-            <SwiperSlide key={product.id}>
-              <Link href={"/product/id"}>
-                <ProductCard
-                  image={product.imgSrc}
-                  brand={product.brandName}
-                  name={product.productName}
-                  price={product.productPrice}
-                  setCart={setCart}
-                  cart={cart}
-                />
-              </Link>
-            </SwiperSlide>
-          );
-        })}
+        {productsInfo.map(
+          (
+            { id, imgSrc, brandName, productName, productPrice }: IProduct,
+            idx: number
+          ) => {
+            return (
+              <SwiperSlide key={id}>
+                <Link key={idx} href={"/product/id"}>
+                  <ProductCard
+                    image={imgSrc}
+                    brand={brandName}
+                    name={productName}
+                    price={productPrice}
+                    setCart={setCart}
+                    cart={cart}
+                  />
+                </Link>
+              </SwiperSlide>
+            );
+          }
+        )}
       </Swiper>
     </>
   );

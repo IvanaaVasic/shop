@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/ProductCard.module.scss";
 import Image from "next/image";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import priceFormatting from "../utils/priceFormatting";
 
 export interface Product {
   image: string;
@@ -44,8 +45,7 @@ const ProductCard = ({
     event.preventDefault();
   };
 
-  const priceFor = Intl.NumberFormat("en-US");
-  const new_priceFor = priceFor.format(Number(price));
+  const formatedPrice = priceFormatting(Number(price));
 
   return (
     <div className={styles.productCard__cardContainer}>
@@ -58,7 +58,7 @@ const ProductCard = ({
         </div>
         <div className={styles.productCard__infoCardHolder}>
           <p className={styles.productCard__productName}>{name}</p>
-          <p>{`${new_priceFor} rsd`}</p>
+          <p>{`${formatedPrice} rsd`}</p>
           <button className={styles.productCard__btn} onClick={addToCart}>
             <MdOutlineShoppingCart size={28} color="#fff" />
           </button>

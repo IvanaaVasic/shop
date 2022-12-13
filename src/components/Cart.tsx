@@ -2,27 +2,21 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import CartStyle from "../styles/Cart.module.scss";
 import { useSelector } from "react-redux";
+import pricingCalculator from "../utils/pricingCalculator";
+import priceFormatting from "../utils/priceFormatting";
 
 const Cart = () => {
-  let isEmpty: boolean;
-
   const productsCart = useSelector((state: any) => state.sample);
 
+  let isEmpty;
   if (productsCart[0]) {
     isEmpty = productsCart[0]?.isEmpty;
   } else {
     isEmpty = true;
   }
 
-  let totalPrice = 0;
-  if (Array.isArray(productsCart)) {
-    productsCart.forEach((product) => {
-      totalPrice += Number(product.price);
-    });
-  }
-
-  const priceFor = Intl.NumberFormat("en-US");
-  const new_priceFor = priceFor.format(totalPrice);
+  const totalPrc = pricingCalculator(productsCart);
+  const formatedPrice = priceFormatting(totalPrc);
 
   return (
     <div className={CartStyle.cartContainer}>
@@ -36,7 +30,7 @@ const Cart = () => {
             className={CartStyle.quantityPriceHolder__size}
           >{`${productsCart.length} products`}</div>
           <div className={CartStyle.quantityPriceHolder__size}>
-            {`RSD ${new_priceFor}`}
+            {`RSD ${formatedPrice}`}
           </div>
         </div>
       )}
