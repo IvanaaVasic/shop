@@ -25,3 +25,34 @@ a {
     background: black;
   }
 }
+
+.swiper .swiper-button-next {
+  color: white;
+  background: rgba(0, 66, 63, 0.6);
+  background-image: url(/images/right.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  border-radius: 50%;
+  padding: 23px;
+}
+
+.swiper .swiper-button-prev {
+  color: white;
+  background: rgba(0, 66, 63, 0.6);
+  background-image: url(/images/left.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  border-radius: 50%;
+  padding: 23px;
+}
+.swiper .swiper-button-next::after {
+  display: none;
+}
+.swiper .swiper-button-prev::after {
+  display: none;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: rgb(0, 66, 63);
+}
