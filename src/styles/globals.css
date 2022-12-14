@@ -2,7 +2,14 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Commissioner", sans-serif;
+  font-family: "RedHat", sans-serif;
+}
+@font-face {
+  font-family: "RedHat";
+  src: url("../assets/RedHat/RedHatDisplay-Regular.ttf");
+  src: url("../assets/RedHat/RedHatDisplay-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
 a {
