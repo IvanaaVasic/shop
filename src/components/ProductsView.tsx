@@ -123,7 +123,7 @@ const ProductsView = () => {
         }}
         navigation
         modules={[Pagination, Navigation]}
-        className={styles.productCard__swiper}
+        className={`${styles.productCard__swiper} productCardSwiper`}
       >
         {productsInfo.map(
           (

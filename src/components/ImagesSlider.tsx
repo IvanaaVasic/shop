@@ -36,7 +36,7 @@ const ImagesSlider = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination]}
-        className={styles.imgSwiper}
+        className={`${styles.imgSwiper} imagesSwiper`}
       >
         {images.map((image) => {
           return (
