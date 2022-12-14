@@ -114,7 +114,7 @@ const ProductsView = () => {
             slidesPerView: 1.3,
           },
           280: {
-            slidesPerView: 1.1,
+            slidesPerView: 1.2,
           },
         }}
         spaceBetween={0}

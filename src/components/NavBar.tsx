@@ -21,9 +21,13 @@ const NavBar = () => {
       <Image src="/images/geta-logo.png" alt="Logo" width={130} height={40} />
       <div className={styles.navigationCartContainer}>
         <nav className={styles.navigation}>
-          {data?.map((nav) => {
+          {data?.map((nav, idx) => {
             return (
-              <NextLink href={nav.path} className={styles.navigation__link}>
+              <NextLink
+                href={nav.path}
+                className={styles.navigation__link}
+                key={idx}
+              >
                 {nav.name}
               </NextLink>
             );
