@@ -1,0 +1,23 @@
+.sectionHeadingContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+}
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 540px;
+}
+.heading {
+  font-size: 32px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.text {
+  font-size: 18px;
+  color: #000;
+  opacity: 0.5;
+  line-height: 28px;
+}

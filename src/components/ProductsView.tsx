@@ -8,7 +8,8 @@ import ProductCard from "./ProductCard";
 import { Product } from "./ProductCard";
 import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import headingsStyles from "../styles/SectionHeadings.module.scss";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
 
 export const productsInfo = [
@@ -85,6 +86,12 @@ const ProductsView = () => {
 
   return (
     <>
+      <div className={headingsStyles.sectionHeadingContainer}>
+        <div className={headingsStyles.headingWrapper}>
+          <h2 className={headingsStyles.heading}>Our featured products</h2>
+          <p className={headingsStyles.text}>~ PRODUCTS ~</p>
+        </div>
+      </div>
       <Swiper
         slidesPerView={3.75}
         breakpoints={{
