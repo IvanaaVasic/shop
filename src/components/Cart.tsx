@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
-import CartStyle from "../styles/Cart.module.scss";
+import styles from "../styles/Cart.module.scss";
 import { useSelector } from "react-redux";
 import pricingCalculator from "../utils/pricingCalculator";
 import priceFormatting from "../utils/priceFormatting";
@@ -19,17 +19,17 @@ const Cart = () => {
   const formatedPrice = priceFormatting(totalPrc);
 
   return (
-    <div className={CartStyle.cartContainer}>
+    <div className={styles.cartContainer}>
       {isEmpty ? (
-        <div className={CartStyle.quantityPriceHolder}>
-          <div className={CartStyle.quantityPriceHolder__size}>0</div>
+        <div className={styles.quantityPriceHolder}>
+          <div className={styles.quantityPriceHolder__size}>0</div>
         </div>
       ) : (
-        <div className={CartStyle.quantityPriceHolder}>
+        <div className={styles.quantityPriceHolder}>
           <div
-            className={CartStyle.quantityPriceHolder__size}
+            className={styles.quantityPriceHolder__size}
           >{`${productsCart.length} products`}</div>
-          <div className={CartStyle.quantityPriceHolder__size}>
+          <div className={styles.quantityPriceHolder__size}>
             {`RSD ${formatedPrice}`}
           </div>
         </div>
@@ -45,3 +45,4 @@ const Cart = () => {
 };
 
 export default Cart;
+//
