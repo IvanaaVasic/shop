@@ -8,9 +8,9 @@ import ProductCard from "./ProductCard";
 import { Product } from "./ProductCard";
 import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
-import headingsStyles from "../styles/SectionHeadings.module.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
+import SectionHeading from "./SectionHeading";
 
 export const productsInfo = [
   {
@@ -77,6 +77,10 @@ export interface IProduct {
   productPrice: string;
   id: number;
 }
+export const productsHeadingInfo = {
+  heading: "Our featured products",
+  text: "~ PRODUCTS ~",
+};
 
 const ProductsView = () => {
   const [cart, setCart] = useState<Product[]>([]);
@@ -86,12 +90,10 @@ const ProductsView = () => {
 
   return (
     <>
-      <div className={headingsStyles.sectionHeadingContainer}>
-        <div className={headingsStyles.headingWrapper}>
-          <h2 className={headingsStyles.heading}>Our featured products</h2>
-          <p className={headingsStyles.text}>~ PRODUCTS ~</p>
-        </div>
-      </div>
+      <SectionHeading
+        heading={productsHeadingInfo.heading}
+        text={productsHeadingInfo.text}
+      />
       <Swiper
         slidesPerView={3.75}
         breakpoints={{

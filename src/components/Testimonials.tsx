@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/Testimonials.module.scss";
-import headingsStyles from "../styles/SectionHeadings.module.scss";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 export interface ITestimonials {
   imgSrc: string;
@@ -10,6 +10,7 @@ export interface ITestimonials {
   boxClass: string;
   id: number;
 }
+
 export const testimonialsInfo = [
   {
     imgSrc: "/images/avatars/1.jpg",
@@ -35,18 +36,18 @@ export const testimonialsInfo = [
     id: 3,
   },
 ];
+export const testimonialsHeadingInfo = {
+  heading: "What our clients say about us",
+  text: "~ TESTIMONIALS ~",
+};
 
 const Testimonials = () => {
   return (
     <>
-      <div className={headingsStyles.sectionHeadingContainer}>
-        <div className={headingsStyles.headingWrapper}>
-          <h2 className={headingsStyles.heading}>
-            What our clients say about us.
-          </h2>
-          <p className={headingsStyles.text}>~ TESTIMONIALS ~</p>
-        </div>
-      </div>
+      <SectionHeading
+        heading={testimonialsHeadingInfo.heading}
+        text={testimonialsHeadingInfo.text}
+      />
       <div className={styles.container}>
         {testimonialsInfo.map(
           ({ boxClass, id, imgSrc, comment, person }: ITestimonials) => {
