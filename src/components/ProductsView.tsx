@@ -14,8 +14,8 @@ import { addProduct } from "../../store/actions/productAction";
 export const productsInfo = [
   {
     imgSrc: "/images/products/product.jpg",
-    brandName: "Nike",
-    productName: "Air Max 253",
+    brandName: "Reebok",
+    productName: "Club C 85",
     productPrice: "12550",
     id: 1,
   },

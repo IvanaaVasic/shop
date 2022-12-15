@@ -8,6 +8,14 @@ import priceFormatting from "../utils/priceFormatting";
 const Cart = () => {
   const productsCart = useSelector((state: any) => state.sample);
 
+  let product;
+
+  if (productsCart.length === 1) {
+    product = "product";
+  } else {
+    product = "products";
+  }
+
   let isEmpty;
   if (productsCart[0]) {
     isEmpty = productsCart[0]?.isEmpty;
@@ -28,7 +36,7 @@ const Cart = () => {
         <div className={styles.quantityPriceHolder}>
           <div
             className={styles.quantityPriceHolder__size}
-          >{`${productsCart.length} products`}</div>
+          >{`${productsCart.length} ${product}`}</div>
           <div className={styles.quantityPriceHolder__size}>
             {`RSD ${formatedPrice}`}
           </div>
