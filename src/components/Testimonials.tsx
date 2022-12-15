@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../styles/Testimonials.module.scss";
+import stylesHeadings from "../styles/Headings.module.scss";
 import Image from "next/image";
-import SectionHeading from "./SectionHeading";
+import Heading from "./Heading";
 
 export interface ITestimonials {
   imgSrc: string;
@@ -39,14 +40,22 @@ export const testimonialsInfo = [
 export const testimonialsHeadingInfo = {
   heading: "What our clients say about us",
   text: "~ TESTIMONIALS ~",
+  classContainer: stylesHeadings.sectionHeadingContainer,
+  classWrapper: stylesHeadings.sectionHeadingWrapper,
+  classHeading: stylesHeadings.sectionHeading,
+  classText: stylesHeadings.sectionText,
 };
 
 const Testimonials = () => {
   return (
     <>
-      <SectionHeading
+      <Heading
         heading={testimonialsHeadingInfo.heading}
         text={testimonialsHeadingInfo.text}
+        classContainer={testimonialsHeadingInfo.classContainer}
+        classWrapper={testimonialsHeadingInfo.classWrapper}
+        classHeading={testimonialsHeadingInfo.classHeading}
+        classText={testimonialsHeadingInfo.classText}
       />
       <div className={styles.container}>
         {testimonialsInfo.map(
