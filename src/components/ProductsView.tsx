@@ -8,7 +8,7 @@ import ProductCard from "./ProductCard";
 import { Product } from "./ProductCard";
 import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
 
 export const productsInfo = [
@@ -114,7 +114,7 @@ const ProductsView = () => {
             slidesPerView: 1.3,
           },
           280: {
-            slidesPerView: 1.1,
+            slidesPerView: 1.2,
           },
         }}
         spaceBetween={0}

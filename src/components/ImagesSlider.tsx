@@ -20,6 +20,7 @@ const images: imagesInterface[] = [
   { img: "/images/sneakers4.jpg", id: 5 },
   { img: "/images/sneakers5.jpg", id: 6 },
   { img: "/images/sneakers6.jpg", id: 7 },
+  { img: "/images/sneakers7.jpg", id: 8 },
 ];
 const ImagesSlider = () => {
   return (
