@@ -4,11 +4,11 @@ import styles from "../styles/NavBar.module.scss";
 import Image from "next/image";
 import NextLink from "next/link";
 
-export interface navigationData {
+export interface INavigation {
   name: string;
   path: string;
 }
-const data: navigationData[] = [
+const data = [
   { name: "HOME", path: "/" },
   { name: "CHECKOUT", path: "/checkout" },
   { name: "CONTACT", path: "/contact" },
@@ -21,10 +21,14 @@ const NavBar = () => {
       <Image src="/images/geta-logo.png" alt="Logo" width={130} height={40} />
       <div className={styles.navigationCartContainer}>
         <nav className={styles.navigation}>
-          {data?.map((nav) => {
+          {data?.map(({ name, path }: INavigation, idx) => {
             return (
-              <NextLink href={nav.path} className={styles.navigation__link}>
-                {nav.name}
+              <NextLink
+                href={path}
+                className={styles.navigation__link}
+                key={idx}
+              >
+                {name}
               </NextLink>
             );
           })}

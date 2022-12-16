@@ -1,0 +1,69 @@
+.container {
+  height: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 65vw;
+  margin: 0 auto;
+  margin-top: 48px;
+}
+.boxOne {
+  display: flex;
+  align-self: flex-start;
+}
+.boxTwo {
+  display: flex;
+  align-self: center;
+  background-color: rgb(0, 66, 63);
+  color: #fff;
+}
+.boxThree {
+  display: flex;
+  align-self: flex-end;
+  margin-right: 0px;
+}
+.boxDecoration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px -5px rgb(73 93 207 / 40%);
+  max-height: 370px;
+  height: 370px;
+  width: 280px;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 0px 20px;
+}
+.avatar {
+  margin-bottom: 32px;
+  border-radius: 50%;
+}
+.testimoialText {
+  text-align: center;
+  line-height: 22px;
+}
+.person {
+  opacity: 0.6;
+  margin-top: 20px;
+}
+@media only screen and (max-width: 970px) {
+  .container {
+    height: auto;
+    flex-direction: column;
+    justify-content: unset;
+    width: 65vw;
+    margin: 0 auto;
+    margin-top: 48px;
+  }
+  .boxDecoration {
+    margin-bottom: 40px;
+    margin-right: 0px;
+    align-self: center;
+  }
+}
+@media only screen and (max-width: 672px) {
+  .container {
+    margin-top: 40px;
+  }
+}
