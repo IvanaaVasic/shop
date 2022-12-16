@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "../styles/Brand.module.scss";
+import stylesHeadings from "../styles/Headings.module.scss";
+
 import Image from "next/image";
+import Heading from "./Heading";
 
 export interface IBrand {
   imgSrc: string;
@@ -42,17 +45,36 @@ export const brandsData = [
   },
 ];
 
+export const brandsHeadingInfo = {
+  heading: "Lorem ipsum dolor sit amet",
+  text: "~ BRAND LIST BLOCK ~",
+  classContainer: stylesHeadings.sectionHeadingContainer,
+  classWrapper: stylesHeadings.sectionHeadingWrapper,
+  classHeading: stylesHeadings.sectionHeading,
+  classText: stylesHeadings.sectionText,
+};
+
 const BrandsOverview = () => {
   return (
-    <div className={styles.container}>
-      {brandsData.map(({ imgSrc, id }: IBrand) => {
-        return (
-          <div className={styles.box} key={id}>
-            <Image src={imgSrc} alt="brand logo" width={200} height={120} />
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Heading
+        heading={brandsHeadingInfo.heading}
+        text={brandsHeadingInfo.text}
+        classContainer={brandsHeadingInfo.classContainer}
+        classWrapper={brandsHeadingInfo.classWrapper}
+        classHeading={brandsHeadingInfo.classHeading}
+        classText={brandsHeadingInfo.classText}
+      />
+      <div className={styles.container}>
+        {brandsData.map(({ imgSrc, id }: IBrand) => {
+          return (
+            <div className={styles.box} key={id}>
+              <Image src={imgSrc} alt="brand logo" width={200} height={120} />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
