@@ -17,8 +17,9 @@ import colorTheme from './documents/colorTheme'
 import page from './documents/page'
 import product from './documents/product'
 import productVariant from './documents/productVariant'
+import productSneackers from './productSneackers'
 
-const documents = [collection, colorTheme, page, product, productVariant]
+const documents = [collection, colorTheme, page, product, productVariant, productSneackers]
 
 // Singleton document types
 import home from './singletons/home'
