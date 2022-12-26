@@ -4,6 +4,7 @@ import ImagesSlider from "../components/ImagesSlider";
 import ProductsView from "../components/ProductsView";
 import Testimonials from "../components/Testimonials";
 import Heading from "../components/Heading";
+import BrandsOverview from "../components/BrandsOverview";
 
 export const heading = {
   header: "Geta Commerce Cloud",
@@ -28,6 +29,7 @@ export default function Home() {
       />
       <ProductsView />
       <Testimonials />
+      <BrandsOverview />
     </>
   );
 }
