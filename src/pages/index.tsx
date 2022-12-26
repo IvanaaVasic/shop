@@ -1,10 +1,10 @@
 import stylesHeadings from "../styles/Headings.module.scss";
-import NavBar from "../components/NavBar";
 import ImagesSlider from "../components/ImagesSlider";
 import ProductsView from "../components/ProductsView";
 import Testimonials from "../components/Testimonials";
 import Heading from "../components/Heading";
 import BrandsOverview from "../components/BrandsOverview";
+import Layout from "../components/Layout";
 
 export const heading = {
   header: "Geta Commerce Cloud",
@@ -17,7 +17,6 @@ export const heading = {
 export default function Home() {
   return (
     <>
-      <NavBar />
       <ImagesSlider />
       <Heading
         heading={heading.header}
@@ -33,3 +32,7 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: any) {
+  return <Layout>{page}</Layout>;
+};
