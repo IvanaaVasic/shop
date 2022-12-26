@@ -3,6 +3,7 @@ import ImagesSlider from "../components/ImagesSlider";
 import ProductsView from "../components/ProductsView";
 import Testimonials from "../components/Testimonials";
 import Heading from "../components/Heading";
+import BrandsOverview from "../components/BrandsOverview";
 import Layout from "../components/Layout";
 
 export const heading = {
@@ -27,6 +28,7 @@ export default function Home() {
       />
       <ProductsView />
       <Testimonials />
+      <BrandsOverview />
     </>
   );
 }
