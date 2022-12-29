@@ -17,9 +17,10 @@ import colorTheme from './documents/colorTheme'
 import page from './documents/page'
 import product from './documents/product'
 import productVariant from './documents/productVariant'
-import productSneackers from './productSneackers'
+import productSneakers from './productSneakers'
+import hero from './hero'
 
-const documents = [collection, colorTheme, page, product, productVariant, productSneackers]
+const documents = [collection, colorTheme, page, product, productVariant, productSneakers, hero]
 
 // Singleton document types
 import home from './singletons/home'
@@ -63,6 +64,7 @@ import shopifyCollection from './objects/shopifyCollection'
 import shopifyCollectionRule from './objects/shopifyCollectionRule'
 import shopifyProduct from './objects/shopifyProduct'
 import shopifyProductVariant from './objects/shopifyProductVariant'
+import mainHeading from './mainHeading'
 
 const objects = [
   customProductOptionColor,
@@ -95,6 +97,7 @@ const objects = [
   shopifyCollectionRule,
   shopifyProduct,
   shopifyProductVariant,
+  mainHeading,
 ]
 
 export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks]
