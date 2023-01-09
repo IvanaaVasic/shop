@@ -12,6 +12,14 @@ export interface ITestimonials {
   id: number;
 }
 
+export interface ITestimonialsHeading {
+  header: string;
+  description: string;
+}
+export interface IProps {
+  testimonialsHeading: ITestimonialsHeading;
+}
+
 export const testimonialsInfo = [
   {
     imgSrc: "/images/avatars/1.jpg",
@@ -37,25 +45,23 @@ export const testimonialsInfo = [
     id: 3,
   },
 ];
-export const testimonialsHeadingInfo = {
-  heading: "What our clients say about us",
-  text: "~ TESTIMONIALS ~",
+export const testimonialsStyling = {
   classContainer: stylesHeadings.sectionHeadingContainer,
   classWrapper: stylesHeadings.sectionHeadingWrapper,
   classHeading: stylesHeadings.sectionHeading,
   classText: stylesHeadings.sectionText,
 };
 
-const Testimonials = () => {
+const Testimonials = ({ testimonialsHeading }: IProps) => {
   return (
     <>
       <Heading
-        heading={testimonialsHeadingInfo.heading}
-        text={testimonialsHeadingInfo.text}
-        classContainer={testimonialsHeadingInfo.classContainer}
-        classWrapper={testimonialsHeadingInfo.classWrapper}
-        classHeading={testimonialsHeadingInfo.classHeading}
-        classText={testimonialsHeadingInfo.classText}
+        heading={testimonialsHeading.header}
+        text={testimonialsHeading.description}
+        classContainer={testimonialsStyling.classContainer}
+        classWrapper={testimonialsStyling.classWrapper}
+        classHeading={testimonialsStyling.classHeading}
+        classText={testimonialsStyling.classText}
       />
       <div className={styles.container}>
         {testimonialsInfo.map(

@@ -29,6 +29,15 @@ export interface IMainHeading {
   header: string;
   description: string;
 }
+export interface INavigation {
+  name: string;
+  slug: object;
+  _id: string;
+}
+export interface ITestimonials {
+  header: string;
+  description: string;
+}
 export interface IHomePage {
   mainHeading: IMainHeading;
   showHero: boolean;
@@ -40,10 +49,17 @@ export interface IProps {
   products: IProduct[];
   homePage: IHomePage;
   heroImages: IHeroImage[];
+  navigation: INavigation[];
+  testimonialsHeading: ITestimonials;
 }
-export default function Home({ products, homePage, heroImages }: IProps) {
-  console.log(heroImages);
-
+export default function Home({
+  products,
+  homePage,
+  heroImages,
+  navigation,
+  testimonialsHeading,
+}: IProps) {
+  console.log(testimonialsHeading);
   return (
     <>
       <ImagesSlider images={heroImages} />
@@ -56,7 +72,7 @@ export default function Home({ products, homePage, heroImages }: IProps) {
         classText={heading.classText}
       />
       <ProductsView products={products} />
-      <Testimonials />
+      <Testimonials testimonialsHeading={testimonialsHeading} />
       <BrandsOverview />
     </>
   );
@@ -76,12 +92,23 @@ export async function getStaticProps() {
   const heroImages: IHeroImage[] = await client.fetch(
     `*[_type == "heroImages"]`
   );
+  const navigation: IHeroImage[] = await client.fetch(
+    `*[_type == "navigationBar"]`
+  );
+  const testimonialsHeading = await client.fetch(
+    `*[_type == "page"][0].testimonialsHeadings{
+      header,
+      description
+    }`
+  );
 
   return {
     props: {
       products,
       homePage,
       heroImages,
+      navigation,
+      testimonialsHeading,
     },
   };
 }

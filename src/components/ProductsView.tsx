@@ -23,7 +23,6 @@ export interface IProps {
 }
 
 const ProductsView = ({ products }: IProps) => {
-  console.log(products);
   const [cart, setCart] = useState<Product[]>([]);
 
   const dispatch = useDispatch();

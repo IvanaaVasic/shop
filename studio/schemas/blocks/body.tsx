@@ -40,10 +40,6 @@ export default defineField({
       type: 'module.grid',
     },
     {
-      name: 'blockImages',
-      type: 'module.images',
-    },
-    {
       name: 'blockInstagram',
       type: 'module.instagram',
     },

@@ -30,11 +30,13 @@ export default defineField({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+    //Main heading
     defineField({
       name: 'mainHeading',
       title: 'Main Heading',
       type: 'mainHeading',
       validation: (Rule) => Rule.required(),
+      group: 'editorial',
     }),
     // Slug
     defineField({
@@ -43,6 +45,14 @@ export default defineField({
       options: {source: 'title'},
       // @ts-ignore - TODO - fix this TS error
       validation: validateSlug,
+    }),
+    //Testimonials Heading
+    defineField({
+      name: 'testimonialsHeadings',
+      title: 'Testimonials Heading',
+      type: 'testimonialsHeadings',
+      validation: (Rule) => Rule.required(),
+      group: 'editorial',
     }),
     // Color theme
     defineField({
