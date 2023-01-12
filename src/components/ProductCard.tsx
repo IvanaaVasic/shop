@@ -3,22 +3,23 @@ import styles from "../styles/ProductCard.module.scss";
 import Image from "next/image";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import priceFormatting from "../utils/priceFormatting";
+import { urlFromThumbnail } from "../utils/image";
 
-export interface Product {
+export interface IProduct {
   image: string;
   brand: string;
   name: string;
-  price: string;
+  price: number;
   quantity: number;
   isEmpty: boolean;
 }
-interface ProductCardProps {
+interface IProductCardProps {
   image: string;
   brand: string;
   name: string;
-  price: string;
-  cart: Product[];
-  setCart: (value: Product[]) => void;
+  price: number;
+  cart: IProduct[];
+  setCart: (value: IProduct[]) => void;
 }
 
 const ProductCard = ({
@@ -28,7 +29,7 @@ const ProductCard = ({
   price,
   setCart,
   cart,
-}: ProductCardProps) => {
+}: IProductCardProps) => {
   const addToCart = (event: React.MouseEvent) => {
     setCart([
       ...cart,
@@ -45,12 +46,17 @@ const ProductCard = ({
     event.preventDefault();
   };
 
-  const formatedPrice = priceFormatting(Number(price));
+  const formatedPrice = priceFormatting(price);
 
   return (
     <div className={styles.productCard__cardContainer}>
       <div className={styles.productCard__imageHolder}>
-        <Image src={image} alt="product" layout="fill" objectFit="cover" />
+        <Image
+          src={urlFromThumbnail(image)}
+          alt="product"
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
       <div className={styles.productCard__cardInfoContainer}>
         <div className={styles.productCard__badgeHolder}>

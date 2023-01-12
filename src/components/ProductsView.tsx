@@ -11,73 +11,18 @@ import styles from "../styles/ProductCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
 
-export const productsInfo = [
-  {
-    imgSrc: "/images/products/product.jpg",
-    brandName: "Reebok",
-    productName: "Club C 85",
-    productPrice: "12550",
-    id: 1,
-  },
-  {
-    imgSrc: "/images/products/product1.jpg",
-    brandName: "New Balance",
-    productName: "New Balance 650",
-    productPrice: "8500",
-    id: 2,
-  },
-  {
-    imgSrc: "/images/products/product2.jpg",
-    brandName: "Nike",
-    productName: "Nike Air Force",
-    productPrice: "17420",
-    id: 3,
-  },
-  {
-    imgSrc: "/images/products/product3.jpg",
-    brandName: "K Swiss",
-    productName: "Ultra Shot 3",
-    productPrice: "15000",
-    id: 4,
-  },
-  {
-    imgSrc: "/images/products/product4.jpg",
-    brandName: "Skechers",
-    productName: "Dighton Bricelyn",
-    productPrice: "5090",
-    id: 5,
-  },
-  {
-    imgSrc: "/images/products/product5.jpg",
-    brandName: "Converse",
-    productName: "Chuck Taylor All Star",
-    productPrice: "15490",
-    id: 6,
-  },
-  {
-    imgSrc: "/images/products/product6.jpg",
-    brandName: "Puma",
-    productName: "Contempt Demi",
-    productPrice: "7890",
-    id: 7,
-  },
-  {
-    imgSrc: "/images/products/product7.jpg",
-    brandName: "Adidas",
-    productName: "Ultraboost",
-    productPrice: "23760",
-    id: 8,
-  },
-];
 export interface IProduct {
-  imgSrc: string;
-  brandName: string;
-  productName: string;
-  productPrice: string;
-  id: number;
+  image: string;
+  brand: string;
+  name: string;
+  price: number;
+  _id: string;
+}
+export interface IProps {
+  products: IProduct[];
 }
 
-const ProductsView = () => {
+const ProductsView = ({ products }: IProps) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const dispatch = useDispatch();
@@ -125,19 +70,16 @@ const ProductsView = () => {
         modules={[Pagination, Navigation]}
         className={`${styles.productCard__swiper} productCardSwiper`}
       >
-        {productsInfo.map(
-          (
-            { id, imgSrc, brandName, productName, productPrice }: IProduct,
-            idx: number
-          ) => {
+        {products.map(
+          ({ _id, image, brand, name, price }: IProduct, idx: number) => {
             return (
-              <SwiperSlide key={id}>
+              <SwiperSlide key={_id}>
                 <Link key={idx} href={"/product/id"}>
                   <ProductCard
-                    image={imgSrc}
-                    brand={brandName}
-                    name={productName}
-                    price={productPrice}
+                    image={image}
+                    brand={brand}
+                    name={name}
+                    price={price}
                     setCart={setCart}
                     cart={cart}
                   />

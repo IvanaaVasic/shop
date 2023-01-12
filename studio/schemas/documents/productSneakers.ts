@@ -1,6 +1,6 @@
 export default {
-  name: 'productSneackers',
-  title: 'Product Sneackers',
+  name: 'productSneakers',
+  title: 'Product Sneakers',
   type: 'document',
   fields: [
     {
@@ -13,7 +13,6 @@ export default {
       title: 'Price',
       type: 'number',
     },
-
     {
       name: 'image',
       title: 'Image',

@@ -1,7 +1,6 @@
 import React from 'react'
-import {defineField} from 'sanity'
 
-export default defineField({
+export default {
   name: 'body',
   title: 'Body',
   type: 'array',
@@ -28,28 +27,12 @@ export default defineField({
     },
     // Custom blocks
     {
-      name: 'blockAccordion',
-      type: 'module.accordion',
+      name: 'blockTestimonials',
+      type: 'module.testimonials',
     },
     {
-      name: 'blockCallout',
-      type: 'module.callout',
-    },
-    {
-      name: 'blockGrid',
-      type: 'module.grid',
-    },
-    {
-      name: 'blockImages',
-      type: 'module.images',
-    },
-    {
-      name: 'blockInstagram',
-      type: 'module.instagram',
-    },
-    {
-      name: 'blockProducts',
-      type: 'module.products',
+      name: 'blockBrandImages',
+      type: 'module.brand',
     },
   ],
-})
+}

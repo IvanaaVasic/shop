@@ -14,12 +14,7 @@ export const LOCKED_DOCUMENT_TYPES = ['settings', 'home', 'media.tag']
 export const SHOPIFY_DOCUMENT_TYPES = ['product', 'productVariant', 'collection']
 
 // References to include in 'internal' links
-export const PAGE_REFERENCES = [
-  {type: 'collection'},
-  {type: 'home'},
-  {type: 'page'},
-  {type: 'product'},
-]
+export const PAGE_REFERENCES = [{type: 'collection'}, {type: 'home'}, {type: 'page'}]
 
 // API version to use when using the Sanity client within the studio
 // https://www.sanity.io/help/studio-client-specify-api-version
