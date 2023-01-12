@@ -34,9 +34,16 @@ export interface INavigation {
   slug: object;
   _id: string;
 }
-export interface ITestimonials {
+export interface ITestimonialsHeading {
   header: string;
   description: string;
+}
+export interface ITestimonials {
+  image: string;
+  comment: string;
+  person: string;
+  classBox: string;
+  _key: string;
 }
 export interface IHomePage {
   mainHeading: IMainHeading;
@@ -45,12 +52,23 @@ export interface IHomePage {
   title: string;
   _id: string;
 }
+export interface IBrandHeading {
+  header: string;
+  description: string;
+}
+export interface IBrandImages {
+  image: string;
+  _key: string;
+}
 export interface IProps {
   products: IProduct[];
   homePage: IHomePage;
   heroImages: IHeroImage[];
   navigation: INavigation[];
-  testimonialsHeading: ITestimonials;
+  testimonialsHeading: ITestimonialsHeading;
+  testimonials: ITestimonials[];
+  brandHeading: IBrandHeading;
+  brandImages: IBrandImages[];
 }
 export default function Home({
   products,
@@ -58,8 +76,11 @@ export default function Home({
   heroImages,
   navigation,
   testimonialsHeading,
+  testimonials,
+  brandHeading,
+  brandImages,
 }: IProps) {
-  console.log(testimonialsHeading);
+  console.log(brandImages);
   return (
     <>
       <ImagesSlider images={heroImages} />
@@ -72,8 +93,11 @@ export default function Home({
         classText={heading.classText}
       />
       <ProductsView products={products} />
-      <Testimonials testimonialsHeading={testimonialsHeading} />
-      <BrandsOverview />
+      <Testimonials
+        testimonialsHeading={testimonialsHeading}
+        testimonials={testimonials}
+      />
+      <BrandsOverview brandHeading={brandHeading} brandImages={brandImages} />
     </>
   );
 }
@@ -101,6 +125,18 @@ export async function getStaticProps() {
       description
     }`
   );
+  const testimonials = await client.fetch(
+    `*[_type == "page"][0].body[0].testimonials`
+  );
+  const brandHeading = await client.fetch(
+    `*[_type == "page"][0].brandHeadings{
+      header,
+      description
+    }`
+  );
+  const brandImages = await client.fetch(
+    `*[_type == "page"][0].body[2].brandImages`
+  );
 
   return {
     props: {
@@ -109,6 +145,9 @@ export async function getStaticProps() {
       heroImages,
       navigation,
       testimonialsHeading,
+      testimonials,
+      brandHeading,
+      brandImages,
     },
   };
 }

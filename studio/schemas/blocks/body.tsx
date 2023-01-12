@@ -32,6 +32,14 @@ export default defineField({
       type: 'module.accordion',
     },
     {
+      name: 'blockTestimonials',
+      type: 'module.testimonials',
+    },
+    {
+      name: 'blockBrandImages',
+      type: 'module.brand',
+    },
+    {
       name: 'blockCallout',
       type: 'module.callout',
     },

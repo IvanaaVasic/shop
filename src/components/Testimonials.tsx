@@ -3,48 +3,24 @@ import styles from "../styles/Testimonials.module.scss";
 import stylesHeadings from "../styles/Headings.module.scss";
 import Image from "next/image";
 import Heading from "./Heading";
-
-export interface ITestimonials {
-  imgSrc: string;
-  comment: string;
-  person: string;
-  boxClass: string;
-  id: number;
-}
+import { urlFromThumbnail } from "../utils/image";
 
 export interface ITestimonialsHeading {
   header: string;
   description: string;
 }
+export interface ITestimonials {
+  image: string;
+  comment: string;
+  person: string;
+  classBox: string;
+  _key: string;
+}
 export interface IProps {
   testimonialsHeading: ITestimonialsHeading;
+  testimonials: ITestimonials[];
 }
 
-export const testimonialsInfo = [
-  {
-    imgSrc: "/images/avatars/1.jpg",
-    comment:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.",
-    person: "- Mark McDonald",
-    boxClass: styles.boxOne,
-    id: 1,
-  },
-  {
-    imgSrc: "/images/avatars/4.jpg",
-    comment:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ",
-    person: "- Phoebe Adebola",
-    boxClass: styles.boxTwo,
-    id: 2,
-  },
-  {
-    imgSrc: "/images/avatars/3.jpg",
-    comment: "Duis aute irure dolor in reprehenderit in voluptate ",
-    person: "- Bruno Dáire",
-    boxClass: styles.boxThree,
-    id: 3,
-  },
-];
 export const testimonialsStyling = {
   classContainer: stylesHeadings.sectionHeadingContainer,
   classWrapper: stylesHeadings.sectionHeadingWrapper,
@@ -52,7 +28,7 @@ export const testimonialsStyling = {
   classText: stylesHeadings.sectionText,
 };
 
-const Testimonials = ({ testimonialsHeading }: IProps) => {
+const Testimonials = ({ testimonialsHeading, testimonials }: IProps) => {
   return (
     <>
       <Heading
@@ -64,12 +40,15 @@ const Testimonials = ({ testimonialsHeading }: IProps) => {
         classText={testimonialsStyling.classText}
       />
       <div className={styles.container}>
-        {testimonialsInfo.map(
-          ({ boxClass, id, imgSrc, comment, person }: ITestimonials) => {
+        {testimonials.map(
+          ({ classBox, _key, image, comment, person }: ITestimonials) => {
             return (
-              <div className={`${boxClass} ${styles.boxDecoration}`} key={id}>
+              <div
+                className={`${styles[`${classBox}`]} ${styles.boxDecoration}`}
+                key={_key}
+              >
                 <Image
-                  src={imgSrc}
+                  src={urlFromThumbnail(image)}
                   alt="avatar"
                   width={100}
                   height={100}

@@ -53,6 +53,8 @@ import heroCollection from './objects/hero/collection'
 import heroHome from './objects/hero/home'
 import heroPage from './objects/hero/page'
 import moduleAccordion from './objects/module/accordion'
+import moduleTestimonials from './objects/module/testimonials'
+import moduleBrandImages from './objects/module/brandImages'
 import moduleCallout from './objects/module/callout'
 import moduleCallToAction from './objects/module/callToAction'
 import moduleCollection from './objects/module/collection'
@@ -76,6 +78,7 @@ import shopifyProduct from './objects/shopifyProduct'
 import shopifyProductVariant from './objects/shopifyProductVariant'
 import mainHeading from './objects/mainHeading'
 import testimonialsHeadings from './objects/testimonialsHeadings'
+import brandListHeadings from './objects/brandListHeadings'
 
 const objects = [
   customProductOptionColor,
@@ -87,6 +90,8 @@ const objects = [
   heroHome,
   heroPage,
   moduleAccordion,
+  moduleTestimonials,
+  moduleBrandImages,
   moduleCallout,
   moduleCallToAction,
   moduleCollection,
@@ -110,6 +115,7 @@ const objects = [
   shopifyProductVariant,
   mainHeading,
   testimonialsHeadings,
+  brandListHeadings,
 ]
 
 export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks]

@@ -54,6 +54,14 @@ export default defineField({
       validation: (Rule) => Rule.required(),
       group: 'editorial',
     }),
+    //Brand List Heading
+    defineField({
+      name: 'brandHeadings',
+      title: 'Brand Heading',
+      type: 'brandHeadings',
+      validation: (Rule) => Rule.required(),
+      group: 'editorial',
+    }),
     // Color theme
     defineField({
       name: 'colorTheme',
