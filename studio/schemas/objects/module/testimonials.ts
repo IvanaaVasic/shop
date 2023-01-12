@@ -1,16 +1,15 @@
 import {CommentIcon, BlockElementIcon} from '@sanity/icons'
 import pluralize from 'pluralize-esm'
-import {defineField} from 'sanity'
 import blocksToText from '../../../utils/blocksToText'
 
-export default defineField({
+export default {
   name: 'module.testimonials',
   title: 'Testimonials',
   type: 'object',
   icon: CommentIcon,
   fields: [
     // Groups
-    defineField({
+    {
       name: 'testimonials',
       title: 'Testimonials',
       type: 'array',
@@ -21,31 +20,31 @@ export default defineField({
           type: 'object',
           icon: BlockElementIcon,
           fields: [
-            defineField({
+            {
               name: 'person',
               title: 'Person',
               type: 'string',
               validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+            },
+            {
               name: 'comment',
               title: 'Comment',
               type: 'string',
               validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+            },
+            {
               name: 'image',
               title: 'Image',
               type: 'image',
               options: {
                 hotspot: true,
               },
-            }),
-            defineField({
+            },
+            {
               name: 'classBox',
               title: 'ClassBox',
               type: 'string',
-            }),
+            },
           ],
           preview: {
             select: {
@@ -62,7 +61,7 @@ export default defineField({
           },
         },
       ],
-    }),
+    },
   ],
   preview: {
     select: {
@@ -78,4 +77,4 @@ export default defineField({
       }
     },
   },
-})
+}

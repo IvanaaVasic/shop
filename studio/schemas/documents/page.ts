@@ -1,8 +1,7 @@
 import {DocumentIcon} from '@sanity/icons'
-import {defineField} from 'sanity'
 import {validateSlug} from '../../utils/validateSlug'
 
-export default defineField({
+export default {
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -24,83 +23,51 @@ export default defineField({
   ],
   fields: [
     // Title
-    defineField({
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    }),
+    },
     //Main heading
-    defineField({
+    {
       name: 'mainHeading',
       title: 'Main Heading',
       type: 'mainHeading',
       validation: (Rule) => Rule.required(),
       group: 'editorial',
-    }),
+    },
     // Slug
-    defineField({
+    {
       name: 'slug',
       type: 'slug',
       options: {source: 'title'},
       // @ts-ignore - TODO - fix this TS error
       validation: validateSlug,
-    }),
+    },
     //Testimonials Heading
-    defineField({
+    {
       name: 'testimonialsHeadings',
       title: 'Testimonials Heading',
       type: 'testimonialsHeadings',
       validation: (Rule) => Rule.required(),
       group: 'editorial',
-    }),
+    },
     //Brand List Heading
-    defineField({
+    {
       name: 'brandHeadings',
       title: 'Brand Heading',
       type: 'brandHeadings',
       validation: (Rule) => Rule.required(),
       group: 'editorial',
-    }),
-    // Color theme
-    defineField({
-      name: 'colorTheme',
-      title: 'Color theme',
-      type: 'reference',
-      to: [{type: 'colorTheme'}],
-      group: 'theme',
-    }),
-    // Show hero
-    defineField({
-      name: 'showHero',
-      title: 'Show hero',
-      type: 'boolean',
-      description: 'If disabled, page title will be displayed instead',
-      initialValue: false,
-      group: 'editorial',
-    }),
-    // Hero
-    defineField({
-      name: 'hero',
-      title: 'Hero',
-      type: 'hero.page',
-      hidden: ({document}) => !document?.showHero,
-      group: 'editorial',
-    }),
+    },
     // Body
-    defineField({
+    {
       name: 'body',
       title: 'Body',
       type: 'body',
       group: 'editorial',
-    }),
-    // SEO
-    defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo.page',
-      group: 'seo',
-    }),
+    },
   ],
   preview: {
     select: {
@@ -117,4 +84,4 @@ export default defineField({
       }
     },
   },
-})
+}

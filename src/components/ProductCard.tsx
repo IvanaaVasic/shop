@@ -5,7 +5,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import priceFormatting from "../utils/priceFormatting";
 import { urlFromThumbnail } from "../utils/image";
 
-export interface Product {
+export interface IProduct {
   image: string;
   brand: string;
   name: string;
@@ -13,13 +13,13 @@ export interface Product {
   quantity: number;
   isEmpty: boolean;
 }
-interface ProductCardProps {
+interface IProductCardProps {
   image: string;
   brand: string;
   name: string;
   price: number;
-  cart: Product[];
-  setCart: (value: Product[]) => void;
+  cart: IProduct[];
+  setCart: (value: IProduct[]) => void;
 }
 
 const ProductCard = ({
@@ -29,7 +29,7 @@ const ProductCard = ({
   price,
   setCart,
   cart,
-}: ProductCardProps) => {
+}: IProductCardProps) => {
   const addToCart = (event: React.MouseEvent) => {
     setCart([
       ...cart,

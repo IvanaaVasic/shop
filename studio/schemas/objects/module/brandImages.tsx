@@ -1,15 +1,14 @@
 import {ImagesIcon, BlockElementIcon} from '@sanity/icons'
 import pluralize from 'pluralize-esm'
-import {defineField} from 'sanity'
 
-export default defineField({
+export default {
   name: 'module.brand',
   title: 'Brand',
   type: 'object',
   icon: ImagesIcon,
   fields: [
     // Groups
-    defineField({
+    {
       name: 'brandImages',
       title: 'Brand Images',
       type: 'array',
@@ -20,14 +19,14 @@ export default defineField({
           type: 'object',
           icon: BlockElementIcon,
           fields: [
-            defineField({
+            {
               name: 'image',
               title: 'Image',
               type: 'image',
               options: {
                 hotspot: true,
               },
-            }),
+            },
           ],
           preview: {
             prepare() {
@@ -39,7 +38,7 @@ export default defineField({
           },
         },
       ],
-    }),
+    },
   ],
   preview: {
     select: {
@@ -54,4 +53,4 @@ export default defineField({
       }
     },
   },
-})
+}

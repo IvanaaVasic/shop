@@ -135,7 +135,7 @@ export async function getStaticProps() {
     }`
   );
   const brandImages = await client.fetch(
-    `*[_type == "page"][0].body[2].brandImages`
+    `*[_type == "page"][0].body[1].brandImages`
   );
 
   return {

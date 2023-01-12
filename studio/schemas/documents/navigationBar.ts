@@ -1,16 +1,14 @@
-import {defineField, defineType} from 'sanity'
-
-export default defineType({
+export default {
   name: 'navigationBar',
   title: 'Navigation Bar',
   type: 'document',
   fields: [
-    defineField({
+    {
       name: 'name',
       title: 'Name',
       type: 'text',
-    }),
-    defineField({
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -18,6 +16,6 @@ export default defineType({
         source: 'name',
         maxLength: 96,
       },
-    }),
+    },
   ],
-})
+}

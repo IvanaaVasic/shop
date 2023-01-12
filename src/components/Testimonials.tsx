@@ -44,7 +44,7 @@ const Testimonials = ({ testimonialsHeading, testimonials }: IProps) => {
           ({ classBox, _key, image, comment, person }: ITestimonials) => {
             return (
               <div
-                className={`${styles[`${classBox}`]} ${styles.boxDecoration}`}
+                className={`${styles[classBox]} ${styles.boxDecoration}`}
                 key={_key}
               >
                 <Image
