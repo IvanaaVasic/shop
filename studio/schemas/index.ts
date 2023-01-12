@@ -17,9 +17,20 @@ import colorTheme from './documents/colorTheme'
 import page from './documents/page'
 import product from './documents/product'
 import productVariant from './documents/productVariant'
-import productSneackers from './productSneackers'
+import productSneakers from './documents/productSneakers'
+import hero from './documents/hero'
+import navigationBar from './documents/navigationBar'
 
-const documents = [collection, colorTheme, page, product, productVariant, productSneackers]
+const documents = [
+  collection,
+  colorTheme,
+  page,
+  product,
+  productVariant,
+  productSneakers,
+  hero,
+  navigationBar,
+]
 
 // Singleton document types
 import home from './singletons/home'
@@ -42,6 +53,8 @@ import heroCollection from './objects/hero/collection'
 import heroHome from './objects/hero/home'
 import heroPage from './objects/hero/page'
 import moduleAccordion from './objects/module/accordion'
+import moduleTestimonials from './objects/module/testimonials'
+import moduleBrandImages from './objects/module/brandImages'
 import moduleCallout from './objects/module/callout'
 import moduleCallToAction from './objects/module/callToAction'
 import moduleCollection from './objects/module/collection'
@@ -63,6 +76,9 @@ import shopifyCollection from './objects/shopifyCollection'
 import shopifyCollectionRule from './objects/shopifyCollectionRule'
 import shopifyProduct from './objects/shopifyProduct'
 import shopifyProductVariant from './objects/shopifyProductVariant'
+import mainHeading from './objects/mainHeading'
+import testimonialsHeadings from './objects/testimonialsHeadings'
+import brandListHeadings from './objects/brandListHeadings'
 
 const objects = [
   customProductOptionColor,
@@ -74,6 +90,8 @@ const objects = [
   heroHome,
   heroPage,
   moduleAccordion,
+  moduleTestimonials,
+  moduleBrandImages,
   moduleCallout,
   moduleCallToAction,
   moduleCollection,
@@ -95,6 +113,9 @@ const objects = [
   shopifyCollectionRule,
   shopifyProduct,
   shopifyProductVariant,
+  mainHeading,
+  testimonialsHeadings,
+  brandListHeadings,
 ]
 
 export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks]
