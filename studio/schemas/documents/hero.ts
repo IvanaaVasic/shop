@@ -21,4 +21,17 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      image: 'image',
+    },
+    prepare(selection) {
+      const {image} = selection
+      return {
+        title: 'Hero image',
+        subtitle: 'Slider image',
+        media: image,
+      }
+    },
+  },
 }
