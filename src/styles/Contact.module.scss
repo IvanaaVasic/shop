@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+}
+.sectionWrapper {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+.imageSection {
+  background: rgb(0, 66, 63);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img {
+  opacity: 0.2;
+}
+.contactInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+.heading {
+  line-height: 22px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.contactInfo {
+  color: #fff;
+  opacity: 0.8;
+  margin-top: 15px;
+}
+.iconHeaderWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formWrapper {
+  padding: 0px 50px;
+}
+.contactHeader {
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+.subtitle {
+  color: #818386;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+.fields {
+  display: block;
+  color: #010712;
+  font-weight: 500;
+  border: none;
+  border-bottom: 1px solid #818386;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  outline: none;
+}
+.fields:hover {
+  opacity: 0.5;
+}
+.textarea {
+  resize: none;
+}
+@media only screen and (max-width: 780px) {
+  .container {
+    flex-direction: column;
+  }
+  .sectionWrapper {
+    width: 100%;
+  }
+  .imageSection {
+    height: 80vh;
+  }
+}
