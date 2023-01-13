@@ -18,4 +18,16 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      name: 'name',
+    },
+    prepare(selection) {
+      const {name} = selection
+      return {
+        title: name,
+        subtitle: 'Navigation',
+      }
+    },
+  },
 }
