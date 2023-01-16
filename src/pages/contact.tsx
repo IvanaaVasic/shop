@@ -5,8 +5,22 @@ import Layout from "../components/Layout";
 import { GoLocation } from "react-icons/go";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface IFormInput {
+  fullName: string;
+  email: string;
+  message: string;
+}
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
   return (
     <div className={styles.container}>
       <div className={`${styles.sectionWrapper} ${styles.imageSection}`}>
@@ -46,38 +60,47 @@ const Contact = () => {
             We're open for any suggestion or just to have a chat
           </p>
 
-          <form id="contact-form" className={styles.form} method="post">
-            <label htmlFor="name">Full name</label>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <label>Full name</label>
             <input
               type="text"
-              id="name"
-              name="name"
               placeholder="Your Full Name"
-              required
               className={`${styles.fields} ${styles.input}`}
+              {...register("fullName", {
+                required: true,
+              })}
             />
+            {errors?.fullName?.type === "required" && (
+              <p className={styles.error}>This field is required</p>
+            )}
             <label htmlFor="email">Email Address</label>
             <input
               type="email"
-              id="email"
-              name="email"
               placeholder="Your Email Address"
-              required
               className={`${styles.fields} ${styles.input}`}
+              {...register("email", {
+                required: true,
+              })}
             />
+            {errors?.email?.type === "required" && (
+              <p className={styles.error}>This field is required</p>
+            )}
             <label htmlFor="message">Message</label>
             <textarea
               rows={6}
               placeholder="Your Message"
-              id="message"
-              name="message"
-              required
               className={`${styles.fields} ${styles.textarea}`}
+              {...register("message", {
+                required: true,
+              })}
             ></textarea>
-            {/* <!--<a href="javascript:void(0)">--><button type="submit" id="submit" name="submit">Send</button><!--</a>--> */}
+            {errors?.message?.type === "required" && (
+              <p className={styles.error}>This field is required</p>
+            )}
+            <button type="submit" className={styles.btn}>
+              Send
+            </button>
           </form>
-          <div id="error"></div>
-          <div id="success-msg"></div>
         </div>
       </div>
     </div>
