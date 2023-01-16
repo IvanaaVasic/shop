@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Contact.module.scss";
 import Image from "next/image";
 import Layout from "../components/Layout";
@@ -6,6 +6,7 @@ import { GoLocation } from "react-icons/go";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Button from "../components/Button";
 
 interface IFormInput {
   fullName: string;
@@ -14,12 +15,32 @@ interface IFormInput {
 }
 
 const Contact = () => {
+  const [disable, setDisable] = useState<boolean>(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
+
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  useEffect(() => {
+    if (
+      errors?.message?.type === "required" ||
+      errors?.fullName?.type === "required" ||
+      errors?.email?.type === "required"
+    ) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [
+    errors?.fullName?.type,
+    errors?.email?.type,
+    errors?.message?.type,
+    setDisable,
+  ]);
 
   return (
     <div className={styles.container}>
@@ -97,9 +118,13 @@ const Contact = () => {
             {errors?.message?.type === "required" && (
               <p className={styles.error}>This field is required</p>
             )}
-            <button type="submit" className={styles.btn}>
-              Send
-            </button>
+            <Button
+              btnType="submit"
+              theme="primary"
+              content="send"
+              size="regular"
+              disable={disable}
+            />
           </form>
         </div>
       </div>

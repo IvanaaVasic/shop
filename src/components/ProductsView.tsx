@@ -5,7 +5,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import ProductCard from "./ProductCard";
-import { Product } from "./ProductCard";
 import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
 import { useDispatch } from "react-redux";
@@ -18,12 +17,20 @@ export interface IProduct {
   price: number;
   _id: string;
 }
+export interface IProductCart {
+  image: string;
+  brand: string;
+  name: string;
+  price: number;
+  quantity: number;
+  isEmpty: boolean;
+}
 export interface IProps {
   products: IProduct[];
 }
 
 const ProductsView = ({ products }: IProps) => {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<IProductCart[]>([]);
 
   const dispatch = useDispatch();
   dispatch(addProduct(cart));

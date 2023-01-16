@@ -84,18 +84,6 @@
   display: inline;
   content: "⚠ ";
 }
-.btn {
-  text-transform: uppercase;
-  font-weight: 300;
-  background: #3b3636;
-  color: #fff;
-  width: 148px;
-  height: 35px;
-  border: none;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-}
 @media only screen and (max-width: 780px) {
   .container {
     flex-direction: column;
