@@ -9,7 +9,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Button from "../components/Button";
 
 interface IFormInput {
-  fullName: string;
+  firstName: string;
+  lastName: string;
+  subject: string;
   email: string;
   message: string;
 }
@@ -28,15 +30,17 @@ const Contact = () => {
   useEffect(() => {
     if (
       errors?.message?.type === "required" ||
-      errors?.fullName?.type === "required" ||
-      errors?.email?.type === "required"
+      errors?.firstName?.type === "required" ||
+      errors?.email?.type === "required" ||
+      errors?.lastName?.type === "required" ||
+      errors?.subject?.type === "required"
     ) {
       setDisable(true);
     } else {
       setDisable(false);
     }
   }, [
-    errors?.fullName?.type,
+    errors?.firstName?.type,
     errors?.email?.type,
     errors?.message?.type,
     setDisable,
@@ -82,19 +86,31 @@ const Contact = () => {
           </p>
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <label>Full name</label>
+            <label>First name</label>
             <input
               type="text"
-              placeholder="Your Full Name"
+              placeholder="Your First Name"
               className={`${styles.fields} ${styles.input}`}
-              {...register("fullName", {
+              {...register("firstName", {
                 required: true,
               })}
             />
-            {errors?.fullName?.type === "required" && (
+            {errors?.firstName?.type === "required" && (
               <p className={styles.error}>This field is required</p>
             )}
-            <label htmlFor="email">Email Address</label>
+            <label>Last name</label>
+            <input
+              type="text"
+              placeholder="Your Last Name"
+              className={`${styles.fields} ${styles.input}`}
+              {...register("lastName", {
+                required: true,
+              })}
+            />
+            {errors?.lastName?.type === "required" && (
+              <p className={styles.error}>This field is required</p>
+            )}
+            <label>Email Address</label>
             <input
               type="email"
               placeholder="Your Email Address"
@@ -106,7 +122,19 @@ const Contact = () => {
             {errors?.email?.type === "required" && (
               <p className={styles.error}>This field is required</p>
             )}
-            <label htmlFor="message">Message</label>
+            <label>Subject</label>
+            <input
+              type="text"
+              placeholder="Subject"
+              className={`${styles.fields} ${styles.input}`}
+              {...register("subject", {
+                required: true,
+              })}
+            />
+            {errors?.subject?.type === "required" && (
+              <p className={styles.error}>This field is required</p>
+            )}
+            <label>Message</label>
             <textarea
               rows={6}
               placeholder="Your Message"
@@ -121,7 +149,7 @@ const Contact = () => {
             <Button
               btnType="submit"
               theme="primary"
-              content="send"
+              content="send message"
               size="regular"
               disable={disable}
             />
