@@ -7,16 +7,27 @@ import { BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Button from "../components/Button";
+import client from "../utils/sanityClient";
+import { urlFromThumbnail } from "../utils/image";
 
-interface IFormInput {
+export interface IFormInput {
   firstName: string;
   lastName: string;
   subject: string;
   email: string;
   message: string;
 }
+export interface IContactInfo {
+  heading: string;
+  info: string;
+  image: string;
+  _key: string;
+}
+export interface IContactProps {
+  contactInfo: IContactInfo[];
+}
 
-const Contact = () => {
+const Contact = ({ contactInfo }: IContactProps) => {
   const [disable, setDisable] = useState<boolean>(false);
 
   const {
@@ -51,32 +62,27 @@ const Contact = () => {
       <div className={`${styles.sectionWrapper} ${styles.imageSection}`}>
         <Image
           src="/images/contact/contact3.jpg"
-          alt="product"
+          alt="contact image"
           fill
           objectFit="cover"
           className={styles.img}
         />
-        <section className={styles.contactInfoWrapper}>
-          <div className={styles.iconHeaderWrapper}>
-            <GoLocation size={25} color="white" />
-            <h3 className={styles.heading}>Address</h3>
-          </div>
-          <p className={styles.contactInfo}>Bulevar Kralja Aleksandra 79</p>
-        </section>
-        <section className={styles.contactInfoWrapper}>
-          <div className={styles.iconHeaderWrapper}>
-            <BsTelephone size={25} color="white" />
-            <h3 className={styles.heading}>Phone</h3>
-          </div>
-          <p className={styles.contactInfo}>+381 11 123 4567</p>
-        </section>
-        <section className={styles.contactInfoWrapper}>
-          <div className={styles.iconHeaderWrapper}>
-            <AiOutlineMail size={25} color="white" />
-            <h3 className={styles.heading}>Email</h3>
-          </div>
-          <p className={styles.contactInfo}>post@getadigital.com</p>
-        </section>
+        {contactInfo.map(({ heading, info, image, _key }: IContactInfo) => {
+          return (
+            <section className={styles.contactInfoWrapper} key={_key}>
+              <div className={styles.iconHeaderWrapper}>
+                <Image
+                  src={urlFromThumbnail(image)}
+                  alt="contact icon"
+                  width={20}
+                  height={20}
+                />
+                <h3 className={styles.heading}>{heading}</h3>
+              </div>
+              <p className={styles.contactInfo}>{info}</p>
+            </section>
+          );
+        })}
       </div>
       <div className={`${styles.sectionWrapper} ${styles.formSection}`}>
         <div className={styles.formWrapper}>
@@ -164,4 +170,15 @@ Contact.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
 
+export async function getStaticProps() {
+  const contactInfo = await client.fetch(
+    `*[_type == "page"][1].body[1].contact`
+  );
+
+  return {
+    props: {
+      contactInfo,
+    },
+  };
+}
 export default Contact;

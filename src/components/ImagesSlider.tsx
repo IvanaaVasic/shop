@@ -37,7 +37,7 @@ const ImagesSlider = ({ images }: IProps) => {
             <SwiperSlide key={_id}>
               <Image
                 src={urlFromThumbnail(image)}
-                alt="cart icon"
+                alt="hero image"
                 layout="fill"
                 objectFit="cover"
               />

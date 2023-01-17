@@ -34,7 +34,6 @@ export default {
       name: 'mainHeading',
       title: 'Main Heading',
       type: 'mainHeading',
-      validation: (Rule) => Rule.required(),
       group: 'editorial',
     },
     // Slug
@@ -50,7 +49,6 @@ export default {
       name: 'testimonialsHeadings',
       title: 'Testimonials Heading',
       type: 'testimonialsHeadings',
-      validation: (Rule) => Rule.required(),
       group: 'editorial',
     },
     //Brand List Heading
@@ -58,7 +56,6 @@ export default {
       name: 'brandHeadings',
       title: 'Brand Heading',
       type: 'brandHeadings',
-      validation: (Rule) => Rule.required(),
       group: 'editorial',
     },
     // Body

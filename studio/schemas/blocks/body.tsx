@@ -34,5 +34,9 @@ export default {
       name: 'blockBrandImages',
       type: 'module.brand',
     },
+    {
+      name: 'blockContact',
+      type: 'module.contact',
+    },
   ],
 }
