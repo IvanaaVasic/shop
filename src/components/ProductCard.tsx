@@ -69,7 +69,7 @@ const ProductCard = ({
           <Button
             btnType="button"
             theme="primary"
-            content={<MdOutlineShoppingCart size={28} />}
+            content={<MdOutlineShoppingCart size={25} />}
             size="fullWidth"
             handleClick={addToCart}
             disable={false}

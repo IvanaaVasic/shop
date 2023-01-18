@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Contact.module.scss";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import { GoLocation } from "react-icons/go";
-import { BsTelephone } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import Button from "../components/Button";
 import client from "../utils/sanityClient";
 import { urlFromThumbnail } from "../utils/image";
+import Input from "../components/Input";
+import Textarea from "../components/Textarea";
 
 export interface IFormInput {
   firstName: string;
@@ -17,6 +16,7 @@ export interface IFormInput {
   email: string;
   message: string;
 }
+
 export interface IContactInfo {
   heading: string;
   info: string;
@@ -29,22 +29,28 @@ export interface IContactProps {
 
 const Contact = ({ contactInfo }: IContactProps) => {
   const [disable, setDisable] = useState<boolean>(false);
-
+  const methods = useForm<IFormInput>();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = methods;
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   useEffect(() => {
+    const { message, firstName, email, lastName, subject } = errors;
+    const errorTypes = [
+      message?.type,
+      firstName?.type,
+      email?.type,
+      lastName?.type,
+      subject?.type,
+    ];
     if (
-      errors?.message?.type === "required" ||
-      errors?.firstName?.type === "required" ||
-      errors?.email?.type === "required" ||
-      errors?.lastName?.type === "required" ||
-      errors?.subject?.type === "required"
+      errorTypes.includes("required") ||
+      errorTypes.includes("minLength") ||
+      errorTypes.includes("pattern")
     ) {
       setDisable(true);
     } else {
@@ -52,10 +58,15 @@ const Contact = ({ contactInfo }: IContactProps) => {
     }
   }, [
     errors?.firstName?.type,
+    errors?.lastName?.type,
     errors?.email?.type,
     errors?.message?.type,
+    errors?.subject?.type,
     setDisable,
   ]);
+
+  const expression =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   return (
     <div className={styles.container}>
@@ -90,76 +101,56 @@ const Contact = ({ contactInfo }: IContactProps) => {
           <p className={styles.subtitle}>
             We're open for any suggestion or just to have a chat
           </p>
-
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <label>First name</label>
-            <input
-              type="text"
-              placeholder="Your First Name"
-              className={`${styles.fields} ${styles.input}`}
-              {...register("firstName", {
-                required: true,
-              })}
-            />
-            {errors?.firstName?.type === "required" && (
-              <p className={styles.error}>This field is required</p>
-            )}
-            <label>Last name</label>
-            <input
-              type="text"
-              placeholder="Your Last Name"
-              className={`${styles.fields} ${styles.input}`}
-              {...register("lastName", {
-                required: true,
-              })}
-            />
-            {errors?.lastName?.type === "required" && (
-              <p className={styles.error}>This field is required</p>
-            )}
-            <label>Email Address</label>
-            <input
-              type="email"
-              placeholder="Your Email Address"
-              className={`${styles.fields} ${styles.input}`}
-              {...register("email", {
-                required: true,
-              })}
-            />
-            {errors?.email?.type === "required" && (
-              <p className={styles.error}>This field is required</p>
-            )}
-            <label>Subject</label>
-            <input
-              type="text"
-              placeholder="Subject"
-              className={`${styles.fields} ${styles.input}`}
-              {...register("subject", {
-                required: true,
-              })}
-            />
-            {errors?.subject?.type === "required" && (
-              <p className={styles.error}>This field is required</p>
-            )}
-            <label>Message</label>
-            <textarea
-              rows={6}
-              placeholder="Your Message"
-              className={`${styles.fields} ${styles.textarea}`}
-              {...register("message", {
-                required: true,
-              })}
-            ></textarea>
-            {errors?.message?.type === "required" && (
-              <p className={styles.error}>This field is required</p>
-            )}
-            <Button
-              btnType="submit"
-              theme="primary"
-              content="send message"
-              size="regular"
-              disable={disable}
-            />
-          </form>
+          <FormProvider {...methods}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                label="First Name"
+                inputType="text"
+                placeholder="Your First Name"
+                registerField="firstName"
+                required
+                minLength={3}
+              />
+              <Input
+                label="Last Name"
+                inputType="text"
+                placeholder="Your Last Name"
+                registerField="lastName"
+                required
+                minLength={3}
+              />
+              <Input
+                label="Email"
+                inputType="text"
+                placeholder="Your Email Address "
+                registerField="email"
+                required
+                minLength={3}
+                expression={expression}
+                errorMsg="email address"
+              />
+              <Input
+                label="Subject"
+                inputType="text"
+                placeholder="Subject"
+                registerField="subject"
+                required
+              />
+              <Textarea
+                label="Message"
+                required
+                placeholder="Your Message"
+                registerField="message"
+              />
+              <Button
+                btnType="submit"
+                theme="primary"
+                content="send message"
+                size="regular"
+                disable={disable}
+              />
+            </form>
+          </FormProvider>
         </div>
       </div>
     </div>

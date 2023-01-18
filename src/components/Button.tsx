@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/Button.module.scss";
 
-export interface IButton {
+export interface IButtonProps {
   btnType: "button" | "submit" | "reset" | undefined;
   theme: string; // primary or secondary
   content: JSX.Element | string; // icon or text
@@ -17,7 +17,7 @@ const Button = ({
   size,
   handleClick,
   disable,
-}: IButton) => {
+}: IButtonProps) => {
   return (
     <button
       type={btnType}
