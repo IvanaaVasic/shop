@@ -19,7 +19,7 @@
 .contactInfoWrapper {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 250px;
   width: 100%;
   margin: 0 auto;
   z-index: 2;
@@ -92,5 +92,11 @@
   }
   .imageSection {
     height: 80vh;
+  }
+  .contactHeader {
+    font-size: 28px;
+  }
+  .formWrapper {
+    padding: 0px 20px;
   }
 }
