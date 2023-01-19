@@ -15,16 +15,20 @@ const blocks = [body]
 
 import moduleTestimonials from './objects/module/testimonials'
 import moduleBrandImages from './objects/module/brandImages'
+import moduleContactInfo from './objects/module/contactInfo'
 import mainHeading from './objects/mainHeading'
 import testimonialsHeadings from './objects/testimonialsHeadings'
 import brandListHeadings from './objects/brandListHeadings'
+import title from './objects/title'
 
 const objects = [
   moduleTestimonials,
   moduleBrandImages,
+  moduleContactInfo,
   mainHeading,
   testimonialsHeadings,
   brandListHeadings,
+  title,
 ]
 
 export const schemaTypes = [...documents, ...objects, ...blocks]
