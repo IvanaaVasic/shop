@@ -37,7 +37,6 @@ const Input = ({
     formState: { errors },
   } = methods;
 
-  console.log(errors);
   return (
     <>
       <label>{label}</label>
