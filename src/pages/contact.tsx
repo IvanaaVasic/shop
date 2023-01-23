@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "../styles/Contact.module.scss";
 import Layout from "../components/Layout";
 import client from "../utils/sanityClient";

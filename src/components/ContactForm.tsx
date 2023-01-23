@@ -83,7 +83,6 @@ const ContactForm = () => {
               placeholder="Your Email Address "
               registerField="email"
               required
-              minLength={3}
               expression={expression}
               errorMsg="email address"
             />
