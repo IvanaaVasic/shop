@@ -14,12 +14,16 @@ export const heading = {
   classText: stylesHeadings.pageText,
 };
 
+export interface ISlug {
+  current: string;
+}
 export interface IProduct {
   image: string;
   brand: string;
   name: string;
   price: number;
   _id: string;
+  slug: ISlug;
 }
 export interface IHeroImage {
   image: string;
@@ -80,7 +84,6 @@ export default function Home({
   brandHeading,
   brandImages,
 }: IProps) {
-  console.log(brandImages);
   return (
     <>
       <ImagesSlider images={heroImages} />

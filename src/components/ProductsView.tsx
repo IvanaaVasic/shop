@@ -10,12 +10,16 @@ import styles from "../styles/ProductCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
 
+export interface ISlug {
+  current: string;
+}
 export interface IProduct {
   image: string;
   brand: string;
   name: string;
   price: number;
   _id: string;
+  slug: ISlug;
 }
 export interface IProductCart {
   image: string;
@@ -78,10 +82,10 @@ const ProductsView = ({ products }: IProps) => {
         className={`${styles.productCard__swiper} productCardSwiper`}
       >
         {products.map(
-          ({ _id, image, brand, name, price }: IProduct, idx: number) => {
+          ({ _id, image, brand, name, price, slug }: IProduct, idx: number) => {
             return (
               <SwiperSlide key={_id}>
-                <Link key={idx} href={"/product/id"}>
+                <Link key={idx} href={`/product/${slug.current}`}>
                   <ProductCard
                     image={image}
                     brand={brand}

@@ -65,7 +65,7 @@ const ProductCard = ({
         </div>
         <div className={styles.productCard__infoCardHolder}>
           <p className={styles.productCard__productName}>{name}</p>
-          <p>{`${formatedPrice} rsd`}</p>
+          <p>{`${formatedPrice} RSD`}</p>
           <Button
             btnType="button"
             theme="primary"

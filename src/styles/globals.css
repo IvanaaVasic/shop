@@ -35,7 +35,7 @@ a {
 
 .productCardSwiper .swiper-button-next {
   color: white;
-  background: rgba(0, 66, 63, 0.6);
+  background: rgba(0, 66, 63, 0.7);
   background-image: url(/images/right.png);
   background-repeat: no-repeat;
   background-size: auto;
@@ -68,4 +68,19 @@ a {
 }
 .swiper-pagination .swiper-pagination-bullet-active {
   background-color: rgb(0, 66, 63);
+}
+.gallery-swiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+.gallery-swiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.swiper-slider.gallery-swiper {
+  width: 100%;
+}
+
+.gallery-swiper {
+  height: auto;
 }

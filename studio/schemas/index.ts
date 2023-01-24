@@ -16,6 +16,7 @@ const blocks = [body]
 import moduleTestimonials from './objects/module/testimonials'
 import moduleBrandImages from './objects/module/brandImages'
 import moduleContactInfo from './objects/module/contactInfo'
+import productImages from './objects/module/productImages'
 import mainHeading from './objects/mainHeading'
 import testimonialsHeadings from './objects/testimonialsHeadings'
 import brandListHeadings from './objects/brandListHeadings'
@@ -25,6 +26,7 @@ const objects = [
   moduleTestimonials,
   moduleBrandImages,
   moduleContactInfo,
+  productImages,
   mainHeading,
   testimonialsHeadings,
   brandListHeadings,
