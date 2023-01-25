@@ -8,6 +8,7 @@ export interface IFormInput {
   lastName: string;
   subject: string;
   email: string;
+  comment: string;
 }
 
 type IInputProps = {

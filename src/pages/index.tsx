@@ -109,7 +109,7 @@ Home.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const products: IProduct[] = await client.fetch(
     `*[_type == "productSneakers"]`
   );

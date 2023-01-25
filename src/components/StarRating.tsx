@@ -9,7 +9,6 @@ const StarRating = ({
   activeColor = "#00423f",
   onChange,
 }: any) => {
-  console.log(value);
   const [state, setState] = useState(value);
 
   const stars = Array.from({ length: count }, () => "★");

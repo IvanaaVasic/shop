@@ -4,8 +4,7 @@
 .imagesWrapper {
   width: 50%;
   height: 100vh;
-  // padding-top: 60px;
-  padding: 60px 20px 0px 20px;
+  padding: 110px 20px 0px 20px;
 }
 .imagesSwiper {
   width: 100%;
@@ -50,7 +49,7 @@
 }
 
 .mySwiper {
-  height: 25%;
+  height: 27%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -61,10 +60,9 @@
 .productInfoWrapper {
   width: 50%;
   height: 100vh;
-  padding: 20px 50px;
+  padding: 0px 50px;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   margin-top: 50px;
   padding-top: 60px;
 }
@@ -100,4 +98,32 @@
 .ratingWrapper {
   display: flex;
   align-items: center;
+}
+.form {
+  margin-top: 50px;
+}
+.comment {
+  margin-top: 50px;
+}
+@media only screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+  .imagesWrapper {
+    width: 100%;
+    order: 2;
+    height: 700px;
+    padding: 20px 20px 50px 20px;
+  }
+  .productInfoWrapper {
+    width: 100%;
+    height: auto;
+    padding: 50px 20px;
+    order: 1;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .imagesWrapper {
+    height: 600px;
+  }
 }
