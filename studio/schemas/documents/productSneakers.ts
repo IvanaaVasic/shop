@@ -50,5 +50,9 @@ export default {
       title: 'Rating',
       type: 'number',
     },
+    {
+      name: 'blockProductImages',
+      type: 'module.productImages',
+    },
   ],
 }
