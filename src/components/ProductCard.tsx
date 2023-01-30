@@ -13,12 +13,14 @@ export interface IProduct {
   price: number;
   quantity: number;
   isEmpty: boolean;
+  id: string;
 }
 interface IProductCardProps {
   image: string;
   brand: string;
   name: string;
   price: number;
+  id: string;
   cart: IProduct[];
   setCart: (value: IProduct[]) => void;
 }
@@ -30,20 +32,58 @@ const ProductCard = ({
   price,
   setCart,
   cart,
+  id,
 }: IProductCardProps) => {
   const addToCart = (event: React.MouseEvent) => {
-    setCart([
-      ...cart,
-      {
-        image: image,
-        brand: brand,
-        name: name,
-        price: price,
-        quantity: 1,
-        isEmpty: false,
-      },
-    ]);
+    let newCart;
+    const originalPrice = price;
+    if (cart.some((item) => item.id === id)) {
+      newCart = cart.map((item) => {
+        if (item.id === id) {
+          const newQ = item.quantity + 1;
+          const newPrice = item.price + originalPrice;
+          return { ...item, quantity: newQ, price: newPrice };
+        } else return item;
+      });
+    } else {
+      newCart = [
+        ...cart,
+        {
+          image: image,
+          brand: brand,
+          name: name,
+          price: price,
+          quantity: 1,
+          isEmpty: false,
+          id: id,
+        },
+      ];
+    }
+    console.log("settujem cart: ", newCart);
+    setCart(newCart);
 
+    // if (index === -1) {
+    //   setCart(cart);
+    //   setCart([
+    //     ...cart,
+    //     {
+    //       image: image,
+    //       brand: brand,
+    //       name: name,
+    //       price: price,
+    //       quantity: 1,
+    //       isEmpty: false,
+    //       id: id,
+    //     },
+    //   ]);
+    // } else {
+    //   cart[index].quantity += 1;
+    // }
+
+    // setCart(cart);
+    // cart.filter((i) => i.id === id).forEach((i) => i.quantity++);
+
+    console.log(cart);
     event.preventDefault();
   };
 
