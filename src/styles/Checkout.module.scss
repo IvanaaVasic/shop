@@ -8,11 +8,12 @@
 }
 .productListWrapper {
   width: 70%;
-  //   background-color: aqua;
+  padding: 0px 20px;
 }
 .checkoutWrapper {
   width: 30%;
-  background-color: brown;
+  background-color: rgb(0, 66, 63);
+  padding: 0px 20px;
 }
 .header {
   text-transform: uppercase;
@@ -41,10 +42,11 @@
 }
 .tableHeader {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   border-bottom: 1px solid rgb(224, 224, 224);
   text-align: left;
   padding: 16px 10px;
+  text-transform: uppercase;
 }
 .tableData {
   border-bottom: 1px solid rgb(224, 224, 224);
@@ -57,4 +59,53 @@
 .quantity {
   margin: 0px 10px;
 }
-//rgb(0, 66, 63) zelena
+.paymentHeader {
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  color: #fff;
+}
+.paymentInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.totalWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 220px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.title {
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.priceInfo {
+  font-size: 16px;
+  color: #fff;
+}
+.totalContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 220px;
+  width: 100%;
+  margin-top: 20px;
+}
+.titleTotal {
+  color: #fff;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.priceInfoTotal {
+  font-size: 18px;
+  color: #fff;
+}
+.termsContainer {
+  margin-top: 50px;
+}

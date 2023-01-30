@@ -6,6 +6,7 @@ import Image from "next/image";
 import { urlFromThumbnail } from "../utils/image";
 import Button from "../components/Button";
 import priceFormatting from "../utils/priceFormatting";
+import Checkbox from "../components/Checkbox";
 
 export interface IProduct {
   image: string;
@@ -19,7 +20,6 @@ export interface IProduct {
 
 const Checkout = () => {
   //   const [cart, setCart] = useLocalStorage("cart", []);
-  //   console.log(cart);
 
   const [cart, setCart] = useState<IProduct[]>([]);
   //when page is rendered
@@ -77,6 +77,11 @@ const Checkout = () => {
     localStorage.setItem("cart", JSON.stringify(newCart));
     window.dispatchEvent(new Event("storage"));
   };
+
+  const totalPrice = cart.reduce((acc, cur) => cur.price + acc, 0);
+  const tax = (totalPrice * 20) / 100;
+
+  const [checked, setChecked] = useState<boolean>(true);
 
   return (
     <div className={styles.container}>
@@ -146,10 +151,12 @@ const Checkout = () => {
                     </div>
                   </td>
                   <td className={styles.tableData}>
-                    <p>{priceFormatting(product.price / product.quantity)}</p>
+                    <p>{`RSD ${priceFormatting(
+                      product.price / product.quantity
+                    )}`}</p>
                   </td>
                   <td className={styles.tableData}>
-                    <p>{priceFormatting(product.price)}</p>
+                    <p>{`RSD ${priceFormatting(product.price)}`}</p>
                   </td>
                 </tr>
               );
@@ -157,7 +164,40 @@ const Checkout = () => {
           </tbody>
         </table>
       </div>
-      <div className={styles.checkoutWrapper}></div>
+      <div className={styles.checkoutWrapper}>
+        <h1 className={styles.paymentHeader}>Payment Info</h1>
+        <div className={styles.paymentInfoWrapper}>
+          <div className={styles.totalWrapper}>
+            <p className={styles.title}>Subtotal:</p>
+            <p className={styles.priceInfo}>{`RSD ${priceFormatting(
+              totalPrice
+            )}`}</p>
+          </div>
+          <div className={styles.totalWrapper}>
+            <p className={styles.title}>Tax (20%):</p>
+            <p className={styles.priceInfo}>{`RSD ${priceFormatting(tax)}`}</p>
+          </div>
+          <div className={styles.totalContainer}>
+            <p className={styles.titleTotal}>Total:</p>
+            <p className={styles.priceInfoTotal}>{`RSD ${priceFormatting(
+              totalPrice + tax
+            )}`}</p>
+          </div>
+        </div>
+
+        <form className={styles.termsContainer}>
+          <Checkbox checked={checked} setChecked={setChecked} />
+          <div>
+            <Button
+              btnType="button"
+              theme="secondary"
+              content="Buy"
+              size="fullWidth"
+              disable={checked}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
