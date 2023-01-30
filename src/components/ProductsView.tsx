@@ -37,7 +37,6 @@ export interface IProps {
 
 const ProductsView = ({ products }: IProps) => {
   const [cart, setCart] = useLocalStorage("cart", []);
-  console.log(cart);
 
   const dispatch = useDispatch();
   dispatch(addProduct(cart));

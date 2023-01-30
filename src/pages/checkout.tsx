@@ -7,6 +7,7 @@ import { urlFromThumbnail } from "../utils/image";
 import Button from "../components/Button";
 import priceFormatting from "../utils/priceFormatting";
 import Checkbox from "../components/Checkbox";
+import { useMediaQuery } from "../hooks/useMediQuery";
 
 export interface IProduct {
   image: string;
@@ -40,8 +41,6 @@ const Checkout = () => {
     window.addEventListener("storage", () => handleStorage());
     return () => window.removeEventListener("storage", () => handleStorage());
   }, []);
-
-  console.log(cart);
 
   const increaseQuantity = (id: string, price: number, quantity: number) => {
     let newCart;
@@ -83,6 +82,8 @@ const Checkout = () => {
 
   const [checked, setChecked] = useState<boolean>(true);
 
+  const isMd = useMediaQuery(780);
+
   return (
     <div className={styles.container}>
       <div className={styles.productListWrapper}>
@@ -92,16 +93,24 @@ const Checkout = () => {
             <tr>
               <th className={styles.tableHeader}>Image</th>
               <th className={styles.tableHeader}>Brand</th>
-              <th className={styles.tableHeader}>Name</th>
+              {isMd ? (
+                <th className={styles.empty}></th>
+              ) : (
+                <th className={styles.tableHeader}>Name</th>
+              )}
               <th className={styles.tableHeader}>Quantity</th>
-              <th className={styles.tableHeader}>Price</th>
+              {isMd ? (
+                <th className={styles.empty}></th>
+              ) : (
+                <th className={styles.tableHeader}>Price</th>
+              )}
               <th className={styles.tableHeader}>Total Price</th>
             </tr>
           </thead>
           <tbody>
             {cart?.map((product: IProduct) => {
               return (
-                <tr key={product.id}>
+                <tr key={product.id} className={styles.infoRow}>
                   <td className={styles.tableData}>
                     <Image
                       src={urlFromThumbnail(product.image)}
@@ -114,9 +123,14 @@ const Checkout = () => {
                   <td className={styles.tableData}>
                     <p>{product.brand}</p>
                   </td>
-                  <td className={styles.tableData}>
-                    <p>{product.name}</p>
-                  </td>
+                  {isMd ? (
+                    <td className={styles.empty}></td>
+                  ) : (
+                    <td className={styles.tableData}>
+                      <p>{product.name}</p>
+                    </td>
+                  )}
+
                   <td className={styles.tableData}>
                     <div className={styles.quantitiWrapper}>
                       <Button
@@ -150,11 +164,16 @@ const Checkout = () => {
                       />
                     </div>
                   </td>
-                  <td className={styles.tableData}>
-                    <p>{`RSD ${priceFormatting(
-                      product.price / product.quantity
-                    )}`}</p>
-                  </td>
+                  {isMd ? (
+                    <td className={styles.empty}></td>
+                  ) : (
+                    <td className={styles.tableData}>
+                      <p>{`RSD ${priceFormatting(
+                        product.price / product.quantity
+                      )}`}</p>
+                    </td>
+                  )}
+
                   <td className={styles.tableData}>
                     <p>{`RSD ${priceFormatting(product.price)}`}</p>
                   </td>
@@ -205,16 +224,5 @@ const Checkout = () => {
 Checkout.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
-
-export async function getServerSideProps() {
-  const contactInfo = await client.fetch(
-    `*[_type == "page"][1].body[1].contact`
-  );
-  return {
-    props: {
-      contactInfo,
-    },
-  };
-}
 
 export default Checkout;

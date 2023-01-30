@@ -59,31 +59,8 @@ const ProductCard = ({
         },
       ];
     }
-    console.log("settujem cart: ", newCart);
     setCart(newCart);
 
-    // if (index === -1) {
-    //   setCart(cart);
-    //   setCart([
-    //     ...cart,
-    //     {
-    //       image: image,
-    //       brand: brand,
-    //       name: name,
-    //       price: price,
-    //       quantity: 1,
-    //       isEmpty: false,
-    //       id: id,
-    //     },
-    //   ]);
-    // } else {
-    //   cart[index].quantity += 1;
-    // }
-
-    // setCart(cart);
-    // cart.filter((i) => i.id === id).forEach((i) => i.quantity++);
-
-    console.log(cart);
     event.preventDefault();
   };
 

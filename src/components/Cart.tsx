@@ -18,7 +18,7 @@ export interface IProduct {
 
 const Cart = () => {
   // const cart = useSelector((state: any) => state.sample);
-  // console.log(cart);
+
   const [cart, setCart] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ const Cart = () => {
   const isEmpty = !cart || cart.length === 0;
 
   const totalQuanity = cart.reduce((acc, cur) => cur.quantity + acc, 0);
-  console.log(totalQuanity);
 
   const totalPrc = pricingCalculator(cart);
   const formatedPrice = priceFormatting(totalPrc);
