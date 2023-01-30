@@ -28,7 +28,7 @@ Contact.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const contactInfo = await client.fetch(
     `*[_type == "page"][1].body[1].contact`
   );

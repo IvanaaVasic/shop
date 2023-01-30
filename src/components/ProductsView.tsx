@@ -9,6 +9,7 @@ import Link from "next/link";
 import styles from "../styles/ProductCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/productAction";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export interface ISlug {
   current: string;
@@ -29,12 +30,13 @@ export interface IProductCart {
   quantity: number;
   isEmpty: boolean;
 }
+
 export interface IProps {
   products: IProduct[];
 }
 
 const ProductsView = ({ products }: IProps) => {
-  const [cart, setCart] = useState<IProductCart[]>([]);
+  const [cart, setCart] = useLocalStorage("cart", []);
 
   const dispatch = useDispatch();
   dispatch(addProduct(cart));
@@ -93,6 +95,7 @@ const ProductsView = ({ products }: IProps) => {
                     price={price}
                     setCart={setCart}
                     cart={cart}
+                    id={_id}
                   />
                 </Link>
               </SwiperSlide>

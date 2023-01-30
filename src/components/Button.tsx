@@ -5,7 +5,7 @@ export interface IButtonProps {
   btnType: "button" | "submit" | "reset" | undefined;
   theme: string; // primary or secondary
   content: JSX.Element | string; // icon or text
-  size: string; // regular or fullWidth
+  size: string; // regular, auto or fullWidth
   handleClick?: (event: React.MouseEvent) => void; //optional
   disable: boolean; //true or false
 }
