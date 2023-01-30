@@ -20,8 +20,6 @@ export interface IProduct {
 }
 
 const Checkout = () => {
-  //   const [cart, setCart] = useLocalStorage("cart", []);
-
   const [cart, setCart] = useState<IProduct[]>([]);
   //when page is rendered
   useEffect(() => {

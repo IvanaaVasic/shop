@@ -12,13 +12,14 @@ const data = [
   { name: "HOME", path: "/" },
   { name: "CHECKOUT", path: "/checkout" },
   { name: "CONTACT", path: "/contact" },
-  { name: "PRODUCT", path: "/product" },
 ];
 
 const NavBar = () => {
   return (
     <header className={styles.container}>
-      <Image src="/images/geta-logo.png" alt="Logo" width={130} height={40} />
+      <NextLink href="/" className={styles.navigation__link}>
+        <Image src="/images/geta-logo.png" alt="Logo" width={130} height={40} />
+      </NextLink>
       <div className={styles.navigationCartContainer}>
         <nav className={styles.navigation}>
           {data?.map(({ name, path }: INavigation, idx) => {
