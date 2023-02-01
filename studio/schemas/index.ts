@@ -8,8 +8,12 @@ const documents = [page, productSneakers, hero, navigationBar]
 
 // Block content
 import body from './blocks/body'
+import {productListBlock} from './blocks/productListBlock'
 
-const blocks = [body]
+const blocks = [body, productListBlock]
+
+//types
+import * as types from './types/index'
 
 // Object types
 
@@ -33,4 +37,4 @@ const objects = [
   title,
 ]
 
-export const schemaTypes = [...documents, ...objects, ...blocks]
+export const schemaTypes = [...documents, ...objects, ...blocks, ...Object.values(types)]

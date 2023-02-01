@@ -41,7 +41,6 @@ export default {
       name: 'slug',
       type: 'slug',
       options: {source: 'title'},
-      // @ts-ignore - TODO - fix this TS error
       validation: validateSlug,
     },
     //Testimonials Heading
@@ -63,6 +62,13 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'body',
+      group: 'editorial',
+    },
+    //Product List Block
+    {
+      name: 'productListBlock',
+      title: 'Product List',
+      type: 'productListBlock',
       group: 'editorial',
     },
   ],

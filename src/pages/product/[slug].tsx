@@ -36,12 +36,13 @@ Product.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getServerSideProps({ params }: any) {
+export const getServerSideProps = async ({ params }: any) => {
+  const slug = params.slug;
   const product = await client.fetch(
-    `*[_type == "productSneakers" && slug.current == "${params.slug}"][0]`
+    `*[_type == "productSneakers" && slug.current == "${slug}"][0]`
   );
   return {
     props: { slug: params.slug, product },
   };
-}
+};
 export default Product;
