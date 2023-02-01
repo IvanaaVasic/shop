@@ -23,6 +23,7 @@ interface IProductCardProps {
   id: string;
   cart: IProduct[];
   setCart: (value: IProduct[]) => void;
+  classContainer: string;
 }
 
 const ProductCard = ({
@@ -33,6 +34,7 @@ const ProductCard = ({
   setCart,
   cart,
   id,
+  classContainer,
 }: IProductCardProps) => {
   const addToCart = (event: React.MouseEvent) => {
     let newCart;
@@ -67,8 +69,8 @@ const ProductCard = ({
   const formatedPrice = priceFormatting(price);
 
   return (
-    <div className={styles.productCard__cardContainer}>
-      <div className={styles.productCard__imageHolder}>
+    <div className={`${classContainer}`}>
+      <div className={styles.imageHolder}>
         <Image
           src={urlFromThumbnail(image)}
           alt="product"
@@ -76,12 +78,12 @@ const ProductCard = ({
           objectFit="cover"
         />
       </div>
-      <div className={styles.productCard__cardInfoContainer}>
-        <div className={styles.productCard__badgeHolder}>
-          <div className={styles.productCard__badge}>{brand}</div>
+      <div className={styles.cardInfoContainer}>
+        <div className={styles.badgeHolder}>
+          <div className={styles.badge}>{brand}</div>
         </div>
-        <div className={styles.productCard__infoCardHolder}>
-          <p className={styles.productCard__productName}>{name}</p>
+        <div className={styles.infoCardHolder}>
+          <p className={styles.productName}>{name}</p>
           <p>{`${formatedPrice} RSD`}</p>
           <Button
             btnType="button"

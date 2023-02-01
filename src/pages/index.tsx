@@ -111,7 +111,7 @@ Home.getLayout = function getLayout(page: any) {
 
 export async function getServerSideProps() {
   const products: IProduct[] = await client.fetch(
-    `*[_type == "productSneakers"]`
+    `*[_type == "page" && _id == '30b9a19e-52df-43d2-9c2c-d89acee59585'][0].productListBlock.items[]->`
   );
   const homePage: IHomePage = await client.fetch(
     `*[_type == "page" && _id == '30b9a19e-52df-43d2-9c2c-d89acee59585'][0]`

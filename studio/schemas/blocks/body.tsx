@@ -39,4 +39,8 @@ export default {
       type: 'module.contact',
     },
   ],
+  options: {
+    collapsible: true,
+    collapsed: false,
+  },
 }
