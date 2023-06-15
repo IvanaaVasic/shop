@@ -149,6 +149,7 @@ const ProductsView = ({ products }: IProps) => {
                       classContainer={classSwiperContainer}
                     />
                     <div>Test div</div>
+                    <span>sdshbdja</span>
                   </Link>
                 </SwiperSlide>
               );
